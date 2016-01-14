@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="30" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="Game Boy Advance - Super Mario Advance 4 Super Mario Bros 3 - Tiles" tilewidth="16" tileheight="16" spacing="2" margin="2">
+  <image source="Game Boy Advance - Super Mario Advance 4 Super Mario Bros 3 - Tiles.png" width="982" height="452"/>
+ </tileset>
+ <layer name="BK" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6ETWP96JmJfSFg1VVVVVVX19QBFmb1g
+  </data>
+ </layer>
+ <layer name="Land" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJgDAQRNHApkOtRW0qFmUsRHMQNB4CXsKs/8HcZ1jYEAAAgLrZnlmsd6O2yd6905l8yy6wY6s6lw2rQO+WIfrbMca+Xb64Onu8h7KyIzn4u/XPVf27WaAzAAD4jwOfUiFZ
+  </data>
+ </layer>
+</map>
