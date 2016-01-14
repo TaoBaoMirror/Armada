@@ -10,6 +10,33 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Sound">
+      <UniqueIdentifier>{bd2b85aa-cb97-4f0d-85d2-837fbea212eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\BaseUI">
+      <UniqueIdentifier>{68e41b35-030d-4b88-a643-b15d5a9c1beb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Ship">
+      <UniqueIdentifier>{c8e7b114-5611-4a51-a998-a220cb1b4d89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Port">
+      <UniqueIdentifier>{bf2696d0-7d2d-443a-ad96-7ed58eee68ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Wind">
+      <UniqueIdentifier>{e0237067-841f-4cd2-a0e8-93c2913d3831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameScene">
+      <UniqueIdentifier>{d1f8a3e5-1ae4-427c-b1e7-20601977289c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\BattleMap">
+      <UniqueIdentifier>{e33dbe9f-a8eb-4fa1-a09a-c679a493bf0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameManager">
+      <UniqueIdentifier>{6e27f01c-96e8-49f5-8e25-428ac7c59640}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common">
+      <UniqueIdentifier>{c810ec07-213b-49d3-849a-5ed7132312af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +48,42 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BaseUI\ProgressBar.cpp">
+      <Filter>src\BaseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Sound\SoundManager.cpp">
+      <Filter>src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene\TitleScene.cpp">
+      <Filter>src\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene\BattleScene.cpp">
+      <Filter>src\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameManager\GameManager.cpp">
+      <Filter>src\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\BattleMap.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\BattleMapManager.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\CommonMethod.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ResDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ship\ShipBase.cpp">
+      <Filter>src\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ship\Ship_Carrack.cpp">
+      <Filter>src\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ship\ShipManager.cpp">
+      <Filter>src\Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -31,6 +94,42 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseUI\ProgressBar.h">
+      <Filter>src\BaseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sound\SoundManager.h">
+      <Filter>src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene\TitleScene.h">
+      <Filter>src\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene\BattleScene.h">
+      <Filter>src\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameManager\GameManager.h">
+      <Filter>src\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\BattleMap.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\CommonMethod.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ResDef.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\BattleMapManager.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ship\ShipBase.h">
+      <Filter>src\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ship\Ship_Carrack.h">
+      <Filter>src\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ship\ShipManager.h">
+      <Filter>src\Ship</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
