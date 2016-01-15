@@ -8,9 +8,44 @@
    eJztw0ENAAAMA6ETWP96JmJfSFg1VVVVVVX19QBFmb1g
   </data>
  </layer>
- <layer name="Land" width="50" height="30">
+ <layer name="LandBaseLayer" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1LENADAIBDGUMvsPzADJAA+yJXqugCoAYLp73kn323lTx3Q6sujIMvXuN/9dAIAUDX8AAlk=
+  </data>
+ </layer>
+ <layer name="LandLayer" width="50" height="30">
   <data encoding="base64" compression="zlib">
    eJzt1MEJgDAQRNHApkOtRW0qFmUsRHMQNB4CXsKs/8HcZ1jYEAAAgLrZnlmsd6O2yd6905l8yy6wY6s6lw2rQO+WIfrbMca+Xb64Onu8h7KyIzn4u/XPVf27WaAzAAD4jwOfUiFZ
   </data>
  </layer>
+ <layer name="BuildLayer" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7CD/auY0RiCbgmWAADAXV3bAwAA4IsBvGUAsg==
+  </data>
+ </layer>
+ <layer name="ShipLayer" width="50" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz0EJAEAIAEHB/k0OMxrCx4HOJNiNAACAvSp/F8y9BQ8AAHBBA8JeAWE=
+  </data>
+ </layer>
+ <layer name="BulletLayer" width="50" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7CD/ZsY0hiCbgmWAADAXV3bAwAA4IsBo2UAsA==
+  </data>
+ </layer>
+ <layer name="ItemLayer" width="50" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz0EJAEAIAEHB/k0OMxrCx4HOJNiNAACAvSp/F8y9BQ8AAHBBA8JeAWE=
+  </data>
+ </layer>
+ <layer name="EffectLayer" width="50" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz0EJAEAIAEHB/k0OMxrCx4HOJNiNAACAvSp/F8y9BQ8AAHBBA8JeAWE=
+  </data>
+ </layer>
+ <objectgroup name="StartPoint" width="50" height="30">
+  <object name="StartPoint_Left" x="38" y="234"/>
+  <object name="StartPoint_Right" x="761" y="233"/>
+  <object x="560" y="-112"/>
+ </objectgroup>
 </map>

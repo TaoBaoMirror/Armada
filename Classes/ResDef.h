@@ -47,8 +47,8 @@ public:
 	static const std::string g_GameResGUIPListFile;
 	static const std::string g_GameResGUITextureFile;
 
-	static const std::string g_StandByHeroPListFile;
-	static const std::string g_StandByHeroTextureFile;
+	static const std::string g_ShipsPListFile;
+	static const std::string g_ShipsTextureFile;
 
 	static const std::string g_HeroResPlistFile;
 	static const std::string g_HeroResTextureFile;

@@ -19,6 +19,8 @@ public:
 	ShipBase();
 	~ShipBase();
 
+	virtual void InitShip(){}
+
 	virtual void update(float delta) override;
 
 	void SetResource(std::string name);
@@ -75,6 +77,8 @@ protected:
 	std::vector<std::string> ActionsName;
 
 	cocos2d::ValueVector m_ActionsFrameCount;
+
+	std::string m_ShipName;
 
 	bool m_bIsMoving;
 

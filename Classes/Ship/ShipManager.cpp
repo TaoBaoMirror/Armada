@@ -46,6 +46,8 @@ ShipBase* ShipManager::BornTeamShip(TeamShipSeat index, ShipType type /*= ShipTy
 
 	if (pNewShip != nullptr)
 	{
+		pNewShip->InitShip();
+
 		std::map<TeamShipSeat, ShipBase*>::iterator it = m_TeamShips.find(index);
 		if (it == m_TeamShips.end())
 		{
@@ -56,6 +58,7 @@ ShipBase* ShipManager::BornTeamShip(TeamShipSeat index, ShipType type /*= ShipTy
 			it->second->removeFromParentAndCleanup(true);
 
 			delete it->second;
+
 			it->second = pNewShip;
 		}
 	}	
@@ -78,17 +81,23 @@ ShipBase* ShipManager::BornEnemyShip(EnemyShipSeat index, ShipType type /*= Ship
 		break;
 	}
 
-	std::map<EnemyShipSeat, ShipBase*>::iterator it = m_EnemyShips.find(index);
-	if (it == m_EnemyShips.end())
+	if (pNewShip != nullptr)
 	{
-		m_EnemyShips[index] = pNewShip;
-	}
-	else
-	{
-		it->second->removeFromParentAndCleanup(true);
+		pNewShip->InitShip();
 
-		delete it->second;
-		it->second = pNewShip;
+		std::map<EnemyShipSeat, ShipBase*>::iterator it = m_EnemyShips.find(index);
+		if (it == m_EnemyShips.end())
+		{
+			m_EnemyShips[index] = pNewShip;
+		}
+		else
+		{
+			it->second->removeFromParentAndCleanup(true);
+
+			delete it->second;
+
+			it->second = pNewShip;
+		}
 	}
 
 	return pNewShip;
