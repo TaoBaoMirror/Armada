@@ -4,9 +4,11 @@
 Ship_Carrack::Ship_Carrack()
 {
 	//name
-	std::string imgname[6] = { "Carrack_Stop", "Carrack_Move", "Carrack_Attackleft", "Carrack_Attackright", "Carrack_Hurt", "Carrack_Die" };
+	m_ShipName = "Ship_Carrack";
+	//name
+	std::string imgname[6] = { "Stop", "Move", "Attackleft", "Attackright", "Hurt", "Die" };
 	//ActionsName = test; 
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 6; ++i)
 	{
 		ActionsName.push_back(imgname[i]);
 	}
@@ -35,6 +37,11 @@ Ship_Carrack::Ship_Carrack()
 
 Ship_Carrack::~Ship_Carrack()
 {
+}
+//-----------------------------------------------------
+void Ship_Carrack::InitShip()
+{
+	SetResource(m_ShipName);
 }
 //-----------------------------------------------------
 void Ship_Carrack::ShipStopStart()

@@ -167,8 +167,8 @@ const string ResDef::g_GameResTextureFile = "plist//GameRes.png";
 const string ResDef::g_GameResGUIPListFile = "plist//GUI.plist";
 const string ResDef::g_GameResGUITextureFile = "plist//GUI.png";
 
-const string ResDef::g_StandByHeroPListFile = "plist//StandByHero.plist";
-const string ResDef::g_StandByHeroTextureFile = "plist//StandByHero.png";
+const string ResDef::g_ShipsPListFile = "ship//ships.plist";
+const string ResDef::g_ShipsTextureFile = "ship//ships.png";
 
 const string ResDef::g_HeroResPlistFile = "plist//HeroRes.plist";
 const string ResDef::g_HeroResTextureFile = "plist//HeroRes.png";
@@ -269,7 +269,7 @@ void ResDef::loadRes()
 	loadTextures();
 	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_GameResGUIPListFile);
 	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_GameResPListFile);
-	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_StandByHeroPListFile);
+	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_ShipsPListFile);
 	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_HeroResPlistFile);
 	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_MonsterResPlistFile);
 	//cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ResDef::g_BossPlistFile);

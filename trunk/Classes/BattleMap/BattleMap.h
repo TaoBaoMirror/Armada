@@ -15,9 +15,13 @@ public:
 	cocos2d::Layer* GetShipLayer();
 	cocos2d::Layer* GetEffectLayer();
 	cocos2d::Layer* GetItemLayer();
+	cocos2d::Layer* GetBulletLayer();
 
-	cocos2d::Vec2 GetTeamBornPoint();
-	cocos2d::Vec2 GetEnemyBornPoint();
+	cocos2d::TMXLayer* GetBuildLayer();
+	cocos2d::TMXLayer* GetLandLayer();
+
+	cocos2d::Vec2 GetLeftBornPoint();
+	cocos2d::Vec2 GetRightBornPoint();
 
 	void update(float delta) override;
 
@@ -26,11 +30,11 @@ public:
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode code, cocos2d::Event* event);
 
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode code, cocos2d::Event* event);
-
+	
 protected:
-	cocos2d::Vec2 m_TeamBornPoint;
+	cocos2d::Vec2 m_LeftBornPoint;
 
-	cocos2d::Vec2 m_EnemyBornPoint;
+	cocos2d::Vec2 m_RightBornPoint;
 };
 
 #endif

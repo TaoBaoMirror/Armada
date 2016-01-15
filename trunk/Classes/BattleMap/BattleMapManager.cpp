@@ -16,7 +16,8 @@ BattleMapManager* BattleMapManager::getInstance()
 //----------------------------------------
 
 BattleMapManager::BattleMapManager() :
-m_CurBattleMap(nullptr)
+m_CurBattleMap(nullptr),
+m_bTeamBornEdge(BornEdgeType::BornEdgeType_Left)
 {
 }
 
@@ -53,6 +54,16 @@ void BattleMapManager::ReleaseBattleMap()
 		delete m_CurBattleMap;
 		m_CurBattleMap = nullptr;
 	}
+}
+
+void BattleMapManager::SetTeamBornEdge(BornEdgeType edge)
+{
+	m_bTeamBornEdge = edge;
+}
+
+BornEdgeType BattleMapManager::GetTeamBornEdge()
+{
+	return m_bTeamBornEdge;
 }
 
 

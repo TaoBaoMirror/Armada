@@ -10,6 +10,8 @@ public:
 	Ship_Carrack();
 	~Ship_Carrack();
 
+	virtual void InitShip() override;
+
 	virtual void ShipStopStart()override;
 	virtual void ShipStopUpdate(float dt)override;
 	virtual void ShipStopEnd()override;
