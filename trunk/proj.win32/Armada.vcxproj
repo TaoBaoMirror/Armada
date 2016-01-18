@@ -148,6 +148,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BaseUI\ProgressBar.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMap.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMapManager.cpp" />
+    <ClCompile Include="..\Classes\Bullet\BulletBase.cpp" />
+    <ClCompile Include="..\Classes\Bullet\BulletEmitter.cpp" />
     <ClCompile Include="..\Classes\Common\CommonMethod.cpp" />
     <ClCompile Include="..\Classes\Drive\Drive.cpp" />
     <ClCompile Include="..\Classes\Drive\SteeringBehavior.cpp" />
@@ -168,6 +170,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BaseUI\ProgressBar.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMap.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMapManager.h" />
+    <ClInclude Include="..\Classes\Bullet\BulletBase.h" />
+    <ClInclude Include="..\Classes\Bullet\BulletEmitter.h" />
     <ClInclude Include="..\Classes\Common\CommonMethod.h" />
     <ClInclude Include="..\Classes\Drive\Drive.h" />
     <ClInclude Include="..\Classes\Drive\SteeringBehavior.h" />

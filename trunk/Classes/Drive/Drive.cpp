@@ -45,7 +45,7 @@ Drive::~Drive()
 
 }
 
-int Drive::Sign(cocos2d::Vec2& v1,cocos2d::Vec2& v2)
+int Drive::Sign(const cocos2d::Vec2& v1, const cocos2d::Vec2& v2)
 {
 	if (v1.y*v2.x > v1.x*v2.y)
 	{

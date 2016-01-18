@@ -40,6 +40,9 @@
     <Filter Include="src\Drive">
       <UniqueIdentifier>{271446af-39b2-402c-b684-2652011206d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Bullet">
+      <UniqueIdentifier>{c5d09480-5d27-4652-a16b-8550a5512b30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,6 +99,12 @@
     <ClCompile Include="..\Classes\Drive\SteeringBehavior.cpp">
       <Filter>src\Drive</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Bullet\BulletBase.cpp">
+      <Filter>src\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Bullet\BulletEmitter.cpp">
+      <Filter>src\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -151,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Drive\SteeringBehavior.h">
       <Filter>src\Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Bullet\BulletBase.h">
+      <Filter>src\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Bullet\BulletEmitter.h">
+      <Filter>src\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

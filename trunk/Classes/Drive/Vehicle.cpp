@@ -15,10 +15,10 @@ Vehicle::~Vehicle()
 
 void Vehicle::Tick(float time_elapsed)
 {
-	const bool hasResistance = true;
+	const bool hasResistance = false;
 	mTimeElapsed = time_elapsed;
 	cocos2d::Vec2 OldPos = Pos();
-	cocos2d::Vec2 SteeringForce;
+	cocos2d::Vec2 SteeringForce = cocos2d::Vec2::ZERO;
 	SteeringForce = mSteering->Calculate();
 
 	if (hasResistance)
