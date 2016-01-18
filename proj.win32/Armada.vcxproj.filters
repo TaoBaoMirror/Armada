@@ -105,6 +105,9 @@
     <ClCompile Include="..\Classes\Bullet\BulletEmitter.cpp">
       <Filter>src\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\MapCollision.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Bullet\BulletEmitter.h">
       <Filter>src\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\MapCollision.h">
+      <Filter>src\BattleMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
