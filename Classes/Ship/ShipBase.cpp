@@ -67,5 +67,5 @@ void ShipBase::UpdateShip(float dt)
 
 void ShipBase::InitShip()
 {
-	schedule(CC_SCHEDULE_SELECTOR(ShipBase::UpdateShip), 0);
+
 }

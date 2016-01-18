@@ -11,7 +11,6 @@ public:
 	~Ship_Carrack();
 
 	virtual void UpdateShip(float dt);
-
 	virtual void InitShip();
 
 	virtual void ShipStopStart()override;

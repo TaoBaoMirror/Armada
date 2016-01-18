@@ -211,4 +211,9 @@ void Ship_Carrack::UpdateShip(float delta)
 	Tick(delta);
 	//
 	setPosition(mPos.x, mPos.y);
+	//
+	float angle = acos(mHeading.dot(cocos2d::Vec2::UNIT_Y));
+
+	setRotation(angle * Drive::Sign(mHeading, cocos2d::Vec2::UNIT_Y) * 57.2974f);
+
 }

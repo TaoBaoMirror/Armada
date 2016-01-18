@@ -18,6 +18,14 @@ cocos2d::Scene* BattleScene::createScene()
 	BattleMap* pBLayer = BattleMapManager::getInstance()->GetBattleMap();
 
 	scene->addChild(pBLayer, 1);
+	//
+	//
+	auto label = Label::createWithTTF("DebugInfo", "fonts/Marker Felt.ttf", 24);
+	label->setColor(cocos2d::Color3B::RED);
+	label->setPosition(label->getContentSize().width * 0.5f,
+		cocos2d::Director::getInstance()->getWinSize().height - label->getContentSize().height* 0.5f);
+
+	scene->addChild(label, 2, "DebugLable");
 
 	// return the scene
 	return scene;
@@ -76,11 +84,14 @@ void BattleScene::DeployTeamShip(TeamShipSeat seat)
 
 	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
 	{
-		pTeamShip->setPosition(curmap->GetLeftBornPoint());
+		//pTeamShip->setPosition(curmap->GetLeftBornPoint());
+		pTeamShip->SetPos(curmap->GetLeftBornPoint());
 	}
 	else
 	{
-		pTeamShip->setPosition(curmap->GetRightBornPoint());
+		//pTeamShip->setPosition(curmap->GetRightBornPoint());
+		pTeamShip->SetPos(curmap->GetRightBornPoint());
+
 	}
 	
 	
@@ -96,11 +107,15 @@ void BattleScene::DeployEnemyShip(EnemyShipSeat seat)
 	
 	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
 	{
-		pEnemyShip->setPosition(curmap->GetRightBornPoint());		
+		//pEnemyShip->setPosition(curmap->GetRightBornPoint());	
+		pEnemyShip->SetPos(curmap->GetRightBornPoint());
+
 	}
 	else
 	{
-		pEnemyShip->setPosition(curmap->GetLeftBornPoint());
+		//pEnemyShip->setPosition(curmap->GetLeftBornPoint());
+		pEnemyShip->SetPos(curmap->GetLeftBornPoint());
+
 	}
 }
 
