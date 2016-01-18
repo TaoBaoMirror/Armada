@@ -183,7 +183,7 @@ void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t)
 	{
 		Steering()->Boost();
 	}
-	else
+	else if (t == ShipCtrlType_Break)
 	{
 		Steering()->BreakDown();
 	}

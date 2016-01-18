@@ -138,7 +138,10 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		{
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
 		}
-
+		else if (keyCode == EventKeyboard::KeyCode::KEY_S)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Break);
+		}
 		//Turn
 		if (keyCode == EventKeyboard::KeyCode::KEY_A)
 		{
@@ -159,10 +162,7 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireRight);
 		}
 
-		//if (keyCode == EventKeyboard::KeyCode::KEY_S)
-		//{
-		//	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Stop);
-		//}
+
 	}
 	else if (m_BTS == BattleStatue::BattleStatue_Settlement)
 	{

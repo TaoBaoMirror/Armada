@@ -96,7 +96,7 @@ void SteeringBehavior::SetTarget(const cocos2d::Vec2& t)
 	mTarget = t;
 }
 
-void SteeringBehavior::AddForce(const cocos2d::Vec2& force)
+void SteeringBehavior::AddSteeringForce(const cocos2d::Vec2& force)
 {
 	mSteeringForce += force;
 	//
@@ -110,24 +110,15 @@ void SteeringBehavior::Boost()
 {
 	const float MaxBoost = 200;
 	mSteeringForce = mVehicle->Heading() * MaxBoost;
-}
 
-cocos2d::Vec2 SteeringBehavior::Resistance()
-{
-	const float MaxResistanceRate = 0.1f;
+	CCLOG("Boost");
 
-	if (mVehicle->Velocity().lengthSquared() > 0)
-	{
-		mSteeringForce += mVehicle->Velocity().getNormalized() * mSteeringForce.length() * MaxResistanceRate * -1;
-	}
-	//
-	return mSteeringForce;
 }
 
 void SteeringBehavior::TurnLeft()
 {
 	const float SpeedToForceRate = 0.8f;
-	AddForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate * -1);
+	AddSteeringForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate * -1);
 	//
 	CCLOG("TurnLeft");
 }
@@ -135,7 +126,7 @@ void SteeringBehavior::TurnLeft()
 void SteeringBehavior::TurnRight()
 {
 	const float SpeedToForceRate = 0.8f;
-	AddForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate);
+	AddSteeringForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate);
 
 	CCLOG("TurnRight");
 
@@ -144,4 +135,13 @@ void SteeringBehavior::TurnRight()
 void SteeringBehavior::BreakDown()
 {
 	mSteeringForce = cocos2d::Vec2::ZERO;
+
+	if (mVehicle->Velocity().lengthSquared() >= 0.0001f)
+	{
+		mSteeringForce = mVehicle->Velocity().getNormalized() * mVehicle->Speed() * -0.8f;
+
+	}
+
+	CCLOG("BreakDown");
+
 }
