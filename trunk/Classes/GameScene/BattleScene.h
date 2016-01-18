@@ -22,6 +22,10 @@ public:
 	CREATE_FUNC(BattleScene);
 
 	virtual void update(float delta) override;
+
+	virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
+
+	virtual void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
 	
 protected:
 	BattleStatue m_BTS;

@@ -3,6 +3,16 @@
 
 #include "cocos2d.h"
 
+enum ShipCtrlType
+{
+	ShipCtrlType_Move = 0,
+	ShipCtrlType_TurnLeft,
+	ShipCtrlType_TurnRight,
+	ShipCtrlType_FireLeft,
+	ShipCtrlType_FireRight,
+	//ShipCtrlType_Stop,
+};
+
 class ShipBase : public cocos2d::Sprite
 {
 protected:
@@ -65,6 +75,8 @@ public:
 	virtual void AttackRight(){}
 	//------
 	virtual void EatItem(/*ItemType tItem*/){}
+
+	virtual void ShipBattleCtrl(ShipCtrlType type);
 
 	//------
 
