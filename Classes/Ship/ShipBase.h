@@ -8,6 +8,7 @@
 enum ShipCtrlType
 {
 	ShipCtrlType_Move = 0,
+	ShipCtrlType_Break,
 	ShipCtrlType_TurnLeft,
 	ShipCtrlType_TurnRight,
 	ShipCtrlType_FireLeft,

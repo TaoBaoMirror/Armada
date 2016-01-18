@@ -45,14 +45,12 @@ public:
 	//计算垂直于头部的驱动力
 	float    SideComponent();
 	//
-	void AddForce(const cocos2d::Vec2& force);
+	void AddSteeringForce(const cocos2d::Vec2& force);
 
 	void Boost();
 	void TurnLeft();
 	void TurnRight();
 	void BreakDown();
-
-	cocos2d::Vec2 Resistance();
 
 
 protected:

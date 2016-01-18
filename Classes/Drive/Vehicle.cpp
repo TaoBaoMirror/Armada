@@ -21,14 +21,15 @@ void Vehicle::Tick(float time_elapsed)
 	cocos2d::Vec2 SteeringForce = cocos2d::Vec2::ZERO;
 	SteeringForce = mSteering->Calculate();
 
-	if (hasResistance)
-	{
-		SteeringForce = mSteering->Resistance();
-	}
 	//加速度
 	cocos2d::Vec2 acceleration = SteeringForce / mMass;
 	//更新速度
 	mVelocity += acceleration * time_elapsed;
+	//
+	if (hasResistance)
+	{
+		mVelocity *= 0.85f;
+	}
 	//不超过最大速度
 	if (mVelocity.length() > mMaxSpeed)
 	{
