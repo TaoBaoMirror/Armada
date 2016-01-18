@@ -24,6 +24,30 @@ ShipManager::~ShipManager()
 {
 }
 
+//-----------------------------------------
+void ShipManager::Update(float dt)
+{
+	std::map<TeamShipSeat, ShipBase*>::iterator itTeam = m_TeamShips.begin();
+	for (; itTeam != m_TeamShips.end(); ++itTeam)
+	{
+		ShipBase* pShip = itTeam->second;
+		if (pShip != nullptr)
+		{
+			pShip->UpdateShip(dt);
+		}
+	}
+
+	std::map<EnemyShipSeat, ShipBase*>::iterator itEnemy = m_EnemyShips.begin();
+	for (; itEnemy != m_EnemyShips.end(); ++itEnemy)
+	{
+		ShipBase* pShip = itEnemy->second;
+		if (pShip != nullptr)
+		{
+			pShip->UpdateShip(dt);
+		}
+	}
+}
+//-----------------------------------------
 void ShipManager::SetSelfShipSeat(TeamShipSeat seat)
 {
 	m_SelfShipSeat = seat;
