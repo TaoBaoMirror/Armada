@@ -84,7 +84,6 @@ public:
 
 public:
 	//ShipFSM* m_pFSM;
-	CREATE_FUNC(ShipBase);
 
 protected:
 	std::map<std::string, cocos2d::Vector<cocos2d::SpriteFrame*>> m_framesDict;
