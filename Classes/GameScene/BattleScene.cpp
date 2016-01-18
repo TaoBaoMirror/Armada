@@ -39,6 +39,12 @@ bool BattleScene::init()
 
 	DeployEnemyShip(EnemyShipSeat::EnemyShipSeat_1);
 
+	setKeyboardEnabled(true);
+	//auto listenerKeyboard = EventListenerKeyboard::create();
+	//listenerKeyboard->onKeyPressed = CC_CALLBACK_2(BattleScene::onKeyPressed, this);
+	//listenerKeyboard->onKeyReleased = CC_CALLBACK_2(BattleScene::onKeyReleased, this);
+	//_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerKeyboard, this);
+
 	return true;
 }
 
@@ -97,5 +103,53 @@ void BattleScene::DeployEnemyShip(EnemyShipSeat seat)
 	{
 		pEnemyShip->setPosition(curmap->GetLeftBornPoint());
 	}
+}
+
+void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	if (m_BTS == BattleStatue::BattleStatue_Fight)
+	{
+		ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
+
+
+		//Move
+		if (keyCode == EventKeyboard::KeyCode::KEY_W)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
+		}
+
+		//Turn
+		if (keyCode == EventKeyboard::KeyCode::KEY_A)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
+		}
+		else if (keyCode == EventKeyboard::KeyCode::KEY_D)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
+		}
+
+		//Attack
+		if (keyCode == EventKeyboard::KeyCode::KEY_G)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireLeft);
+		}
+		else if (keyCode == EventKeyboard::KeyCode::KEY_H)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireRight);
+		}
+
+		//if (keyCode == EventKeyboard::KeyCode::KEY_S)
+		//{
+		//	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Stop);
+		//}
+	}
+	else if (m_BTS == BattleStatue::BattleStatue_Settlement)
+	{
+	}
+}
+
+void BattleScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+{
+
 }
 

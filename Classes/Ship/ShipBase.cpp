@@ -59,3 +59,10 @@ void ShipBase::SetResource(std::string name)
 	initWithSpriteFrameName(initName);
 	cocos2d::SpriteFrame* frame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(initName);
 }
+
+void ShipBase::ShipBattleCtrl(ShipCtrlType type)
+{
+	//if ()
+	//{
+	//}
+}
