@@ -49,6 +49,9 @@ void Ship_Carrack::InitShip()
 	SetResource(m_ShipName);
 	//
 	InitData();
+
+	m_SelfBoundBoxSize.width = 16.0f;
+	m_SelfBoundBoxSize.height = 32.0f;
 }
 //-----------------------------------------------------
 void Ship_Carrack::ShipStopStart()
@@ -212,7 +215,8 @@ void Ship_Carrack::UpdateShip(float delta)
 	Tick(delta);
 
 	cocos2d::Rect oldBoundingBox = this->getBoundingBox();
-	cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x, mPos.y), oldBoundingBox.size);
+	//cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x, mPos.y), oldBoundingBox.size);
+	cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x - m_SelfBoundBoxSize.width*0.5f, mPos.y - m_SelfBoundBoxSize.height*0.5f), m_SelfBoundBoxSize);
 	//
 	if (BattleMapManager::getInstance()->IsCollideIntersect(newBoundingBox) == false)
 	{

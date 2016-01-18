@@ -81,8 +81,6 @@ public:
 
 	virtual void ShipBattleCtrl(ShipCtrlType type);
 
-	//------
-
 public:
 	//ShipFSM* m_pFSM;
 
@@ -98,6 +96,8 @@ protected:
 	bool m_bIsMoving;
 
 	cocos2d::Vec2 m_CurDirect;
+
+	cocos2d::Size m_SelfBoundBoxSize;
 };
 
 #endif //__SHIP_BASE_H__

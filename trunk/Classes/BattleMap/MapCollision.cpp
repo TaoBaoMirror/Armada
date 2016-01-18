@@ -41,3 +41,8 @@ void MapCollision::Break()
 {
 
 }
+
+cocos2d::Sprite* MapCollision::GetSprite()
+{
+	return m_Sprite;
+}
