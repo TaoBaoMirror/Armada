@@ -13,7 +13,22 @@
 #define Drive_h__
 
 #include "cocos2d.h"
+//////////////////////////////////////////////////////////////////////////
 
+/*³£Á¿*/
+
+const cocos2d::Vec2 DefaultHeading = cocos2d::Vec2(0, 1);
+const cocos2d::Vec2 DefaultSide = cocos2d::Vec2(1, 0);
+const cocos2d::Vec2 DefaultVelocity = cocos2d::Vec2(0, 0);
+const float DefaultMass = 1;
+const float DefaultMaxSpeed = 20;
+const float DefaultTurnRate = 30;
+const float DefaultForce = 20;
+const cocos2d::Vec2 DefaultShipPos = cocos2d::Vec2::ZERO;
+
+
+
+//////////////////////////////////////////////////////////////////////////
 class Drive
 {
 public:

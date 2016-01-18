@@ -1,6 +1,5 @@
 #include "ShipBase.h"
 
-
 ShipBase::ShipBase()
 {
 }
@@ -8,11 +7,6 @@ ShipBase::ShipBase()
 
 ShipBase::~ShipBase()
 {
-}
-
-void ShipBase::update(float delta)
-{
-
 }
 
 void ShipBase::SetResource(std::string name)
@@ -62,7 +56,16 @@ void ShipBase::SetResource(std::string name)
 
 void ShipBase::ShipBattleCtrl(ShipCtrlType type)
 {
-	//if ()
-	//{
-	//}
+
+}
+
+
+void ShipBase::UpdateShip(float dt)
+{
+	CCLOG("ShipBase");
+}
+
+void ShipBase::InitShip()
+{
+	schedule(CC_SCHEDULE_SELECTOR(ShipBase::UpdateShip), 0);
 }

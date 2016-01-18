@@ -10,7 +10,9 @@ public:
 	Ship_Carrack();
 	~Ship_Carrack();
 
-	virtual void InitShip() override;
+	virtual void UpdateShip(float dt);
+
+	virtual void InitShip();
 
 	virtual void ShipStopStart()override;
 	virtual void ShipStopUpdate(float dt)override;
@@ -49,6 +51,16 @@ public:
 	virtual void AttackRight()override;
 	//------
 	virtual void EatItem(/*ItemType tItem*/)override;
+	////  Controller!
+	virtual void ShipBattleCtrl(ShipCtrlType t) override;
+
+	//////////////////////////////////////////////////////////////////////////
+	//
+	//		Vehicle 的重载部分
+	//
+	//////////////////////////////////////////////////////////////////////////
+
+	virtual void InitData();
 };
 
 #endif //

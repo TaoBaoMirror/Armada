@@ -24,7 +24,11 @@ class SteeringBehavior
 {
 public:
 	enum Deceleration{ slow = 3, normal = 2, fast = 1 };
-
+	enum behavior_type
+	{
+		none = 0x00000,
+		arrive = 0x00002,
+	};
 public:
 	SteeringBehavior(Vehicle* agent);
 	virtual ~SteeringBehavior();
@@ -33,7 +37,7 @@ public:
 	//
 	void SetTarget(const cocos2d::Vec2& t);
 	void SetDeceleration(Deceleration d){ mDeceleration = d; }
-	//
+	bool On(behavior_type bt){ return (mFlags & bt) == bt; }
 
 	//计算平行于头部的驱动力
 	float    ForwardComponent();
@@ -41,6 +45,15 @@ public:
 	//计算垂直于头部的驱动力
 	float    SideComponent();
 	//
+	void AddForce(const cocos2d::Vec2& force);
+
+	void Boost();
+	void TurnLeft();
+	void TurnRight();
+	void BreakDown();
+
+	cocos2d::Vec2 Resistance();
+
 
 protected:
 	//
@@ -52,10 +65,15 @@ protected:
 	//
 	Deceleration	mDeceleration;
 	//
+	int				mFlags;
+	//
 	bool      AccumulateForce(cocos2d::Vec2 &sf, const cocos2d::Vec2& ForceToAdd);
 	cocos2d::Vec2 Arrive(const cocos2d::Vec2& TargetPos, Deceleration deceleration);
 
-private:
+public:
+	void ArriveOn(){ mFlags |= arrive; }
+	void ArriveOff(){ if(On(arrive))mFlags ^= arrive; }
+
 
 };
 

@@ -1,4 +1,6 @@
 #include "Ship_Carrack.h"
+#include "Drive/Vehicle.h"
+#include "Drive/SteeringBehavior.h"
 
 
 Ship_Carrack::Ship_Carrack()
@@ -41,7 +43,11 @@ Ship_Carrack::~Ship_Carrack()
 //-----------------------------------------------------
 void Ship_Carrack::InitShip()
 {
+	ShipBase::InitShip();
+
 	SetResource(m_ShipName);
+	//
+	InitData();
 }
 //-----------------------------------------------------
 void Ship_Carrack::ShipStopStart()
@@ -169,4 +175,40 @@ void Ship_Carrack::AttackRight()
 void Ship_Carrack::EatItem( /*ItemType tItem*/)
 {
 
+}
+
+void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t)
+{
+	if (t == ShipCtrlType_Move)
+	{
+		Steering()->Boost();
+	}
+	else
+	{
+		Steering()->BreakDown();
+	}
+
+	if (t ==  ShipCtrlType_TurnLeft)
+	{
+		Steering()->TurnLeft();
+	}
+	else if (t == ShipCtrlType_TurnRight)
+	{
+		Steering()->TurnRight();
+
+	}
+
+}
+
+void Ship_Carrack::InitData()
+{
+	Vehicle::InitData();
+}
+
+void Ship_Carrack::UpdateShip(float delta)
+{
+
+	Tick(delta);
+	//
+	setPosition(mPos.x, mPos.y);
 }
