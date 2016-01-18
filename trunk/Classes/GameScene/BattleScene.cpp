@@ -107,6 +107,13 @@ void BattleScene::DeployEnemyShip(EnemyShipSeat seat)
 
 void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (m_BTS == BattleStatue::BattleStatue_Ready)
+	{
+		if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
+		{
+			m_BTS = BattleStatue::BattleStatue_Fight;
+		}
+	}
 	if (m_BTS == BattleStatue::BattleStatue_Fight)
 	{
 		ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();

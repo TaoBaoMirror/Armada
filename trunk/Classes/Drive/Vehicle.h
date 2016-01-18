@@ -18,14 +18,15 @@ class SteeringBehavior;
 class Vehicle : public Drive
 {
 public:
-	Vehicle();
+	Vehicle(void* world = nullptr);
 	~Vehicle();
 	//
 	void Tick(float);
+	//
+	virtual void InitData();
 
 	//
 	double					TimeElapsed()const{ return mTimeElapsed; }
-	cocos2d::Vec2			SmoothedHeading()const{ return mSmoothedHeading; }
 	SteeringBehavior*const  Steering()const{ return mSteering; }
 	void*const				World()const{ return mWorld; }
 protected:
@@ -33,7 +34,6 @@ protected:
 	void*				mWorld;
 	//
 	SteeringBehavior*	mSteering;
-	cocos2d::Vec2		mSmoothedHeading;
 	float				mTimeElapsed;
 	//
 	Vehicle(const Vehicle&);

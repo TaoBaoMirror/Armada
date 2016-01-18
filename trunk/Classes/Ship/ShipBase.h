@@ -2,6 +2,8 @@
 #define __SHIP_BASE_H__
 
 #include "cocos2d.h"
+#include "Drive/Vehicle.h"
+
 
 enum ShipCtrlType
 {
@@ -13,7 +15,7 @@ enum ShipCtrlType
 	//ShipCtrlType_Stop,
 };
 
-class ShipBase : public cocos2d::Sprite
+class ShipBase : public cocos2d::Sprite , public Vehicle
 {
 protected:
 	enum  ShipAnimType
@@ -26,12 +28,12 @@ protected:
 		ShipAnim_Die,
 	};
 public:
+
 	ShipBase();
 	~ShipBase();
 
-	virtual void InitShip(){}
-
-	virtual void update(float delta) override;
+	virtual void InitShip();
+	virtual void UpdateShip(float dt);
 
 	void SetResource(std::string name);
 
@@ -82,6 +84,7 @@ public:
 
 public:
 	//ShipFSM* m_pFSM;
+	CREATE_FUNC(ShipBase);
 
 protected:
 	std::map<std::string, cocos2d::Vector<cocos2d::SpriteFrame*>> m_framesDict;

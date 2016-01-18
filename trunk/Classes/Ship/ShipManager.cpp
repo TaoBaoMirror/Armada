@@ -16,6 +16,7 @@ ShipManager* ShipManager::getInstance()
 
 ShipManager::ShipManager()
 {
+	m_SelfShipSeat = TeamShipSeat_1;
 }
 
 
