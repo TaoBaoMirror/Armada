@@ -66,4 +66,40 @@ BornEdgeType BattleMapManager::GetTeamBornEdge()
 	return m_bTeamBornEdge;
 }
 
+void BattleMapManager::AddMapCollision(MapCollision* mc)
+{
+	m_MapCollisions.push_back(mc);
+}
+
+void BattleMapManager::RemoveMapCollision(MapCollision* mc)
+{
+	std::vector<MapCollision*>::iterator it = m_MapCollisions.begin();
+	for (; it != m_MapCollisions.end(); ++it)
+	{
+		if (*it == mc)
+		{
+			m_MapCollisions.erase(it);
+			break;
+		}
+	}
+}
+
+bool BattleMapManager::IsCollideIntersect(cocos2d::Rect& rec)
+{
+	std::vector<MapCollision*>::iterator it = m_MapCollisions.begin();
+	for (; it != m_MapCollisions.end(); ++it)
+	{
+		MapCollision* mc = *it;
+		if (mc != nullptr)
+		{
+			if (mc->IsCollision(rec) == true)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 

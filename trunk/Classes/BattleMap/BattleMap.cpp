@@ -1,4 +1,6 @@
 #include "BattleMap.h"
+#include "BattleMapManager.h"
+#include "MapCollision.h"
 
 //Sprites Layer
 #define EffectLayer "EffectLayer"			//显示的特效层
@@ -95,6 +97,72 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 		auto pLandLayer = getLayer(LandLayer);
 		if (pLandLayer != nullptr)
 		{
+			pLandLayer->getTiles();
+			//this->_states->setVisible(false);//如果直接在editor中设置invisible, getLayer会返回nullptr
+			// find
+			auto layerSize = pLandLayer->getLayerSize();
+			cocos2d::Size tsize = pLandLayer->getMapTileSize();
+
+			int x_Tiles = (int)layerSize.width;
+			int y_Tiles = (int)layerSize.height;
+
+			cocos2d::Vec2 curTilePos = cocos2d::Vec2(layerSize.width*0.5f, layerSize.height*0.5f);
+
+			for (int ly = 0; ly < y_Tiles; ++ly)
+			{
+				for (int lx = 0; lx < x_Tiles; ++lx)
+				{
+					//curTilePos = cocos2d::Vec2(layerSize.width*0.5f + j*layerSize.width, layerSize.height*0.5f + i*layerSize.height);
+
+					auto gid = pLandLayer->getTileGIDAt(cocos2d::Vec2(lx, ly));
+					cocos2d::Sprite* pTimeSprite = pLandLayer->getTileAt(cocos2d::Vec2(lx, ly));
+
+					if (pTimeSprite != nullptr)
+					{
+						int i = 100;
+					}
+
+					auto properties = this->getPropertiesForGID(gid);
+
+					if (properties.isNull() == false)
+					{
+						auto properties_Map = properties.asValueMap();
+						if (!properties_Map.empty())
+						{
+							if (properties_Map["collision_type"].asString() == "1")
+							{
+								if (pTimeSprite != nullptr)
+								{
+									//can not break
+									MapCollision* mc = new MapCollision(pTimeSprite);
+									mc->SetRect(pTimeSprite->getBoundingBox());
+									BattleMapManager::getInstance()->AddMapCollision(mc);
+									break;
+								}
+							}
+							else if (properties_Map["collision_type"].asString() == "2")
+							{
+								//can break
+								if (pTimeSprite != nullptr)
+								{
+									//can not break
+									MapCollision* mc = new MapCollision(pTimeSprite);
+									mc->SetCanBreak();
+									mc->SetRect(pTimeSprite->getBoundingBox());
+									BattleMapManager::getInstance()->AddMapCollision(mc);
+									break;
+								}
+							}
+
+							if (properties_Map["is_anim"].asString() == "1")
+							{
+
+							}
+						}
+					}
+				}
+			}
+
 			//海水冲沙滩的特效也在这层 在这里让tiled中的序列中动画播放
 
 			// order

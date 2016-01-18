@@ -1,6 +1,7 @@
 #include "Ship_Carrack.h"
 #include "Drive/Vehicle.h"
 #include "Drive/SteeringBehavior.h"
+#include "BattleMap/BattleMapManager.h"
 
 
 Ship_Carrack::Ship_Carrack()
@@ -209,8 +210,16 @@ void Ship_Carrack::UpdateShip(float delta)
 {
 
 	Tick(delta);
+
+	cocos2d::Rect oldBoundingBox = this->getBoundingBox();
+	cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x, mPos.y), oldBoundingBox.size);
 	//
-	setPosition(mPos.x, mPos.y);
+	if (BattleMapManager::getInstance()->IsCollideIntersect(newBoundingBox) == false)
+	{
+		setPosition(mPos.x, mPos.y);
+	}
+	
+	
 	//
 	float angle = acos(mHeading.dot(cocos2d::Vec2::UNIT_Y));
 

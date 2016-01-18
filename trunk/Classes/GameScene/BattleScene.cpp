@@ -51,6 +51,10 @@ bool BattleScene::init()
 
 	scheduleUpdate();
 
+	m_bHoldPress_Forward = false;
+	m_bHoldPress_Left = false;
+	m_bHoldPress_Right = false;
+
 	return true;
 }
 
@@ -62,6 +66,18 @@ void BattleScene::update(float delta)
 		break;
 	case BattleStatue::BattleStatue_Fight:
 	{
+		if (m_bHoldPress_Forward)
+		{
+			onHoldPress_Forward();
+		}
+		if (m_bHoldPress_Left)
+		{
+			onHoldPress_Left();
+		}
+		if (m_bHoldPress_Right)
+		{
+			onHoldPress_Right();
+		}
 		//update ships
 		ShipManager::getInstance()->Update(delta);
 	}
@@ -121,6 +137,7 @@ void BattleScene::DeployEnemyShip(EnemyShipSeat seat)
 
 void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+
 	if (m_BTS == BattleStatue::BattleStatue_Ready)
 	{
 		if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
@@ -136,7 +153,9 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		//Move
 		if (keyCode == EventKeyboard::KeyCode::KEY_W)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
+			m_bHoldPress_Forward = true;
+
+			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_S)
 		{
@@ -145,11 +164,15 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		//Turn
 		if (keyCode == EventKeyboard::KeyCode::KEY_A)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
+			m_bHoldPress_Left = true;
+
+			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_D)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
+			m_bHoldPress_Right = true;
+
+			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
 		}
 
 		//Attack
@@ -171,6 +194,44 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void BattleScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (m_BTS == BattleStatue::BattleStatue_Fight)
+	{
+		//Move
+		if (keyCode == EventKeyboard::KeyCode::KEY_W)
+		{
+			m_bHoldPress_Forward = false;
+		}
 
+		//Turn
+		if (keyCode == EventKeyboard::KeyCode::KEY_A)
+		{
+			m_bHoldPress_Left = false;
+		}
+		else if (keyCode == EventKeyboard::KeyCode::KEY_D)
+		{
+			m_bHoldPress_Right = false;
+		}
+	}
+}
+
+void BattleScene::onHoldPress_Forward()
+{
+	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
+
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
+}
+
+void BattleScene::onHoldPress_Left()
+{
+	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
+
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
+}
+
+void BattleScene::onHoldPress_Right()
+{
+	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
+
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
 }
 
