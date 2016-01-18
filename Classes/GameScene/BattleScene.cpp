@@ -40,10 +40,8 @@ bool BattleScene::init()
 	DeployEnemyShip(EnemyShipSeat::EnemyShipSeat_1);
 
 	setKeyboardEnabled(true);
-	//auto listenerKeyboard = EventListenerKeyboard::create();
-	//listenerKeyboard->onKeyPressed = CC_CALLBACK_2(BattleScene::onKeyPressed, this);
-	//listenerKeyboard->onKeyReleased = CC_CALLBACK_2(BattleScene::onKeyReleased, this);
-	//_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerKeyboard, this);
+
+	scheduleUpdate();
 
 	return true;
 }
@@ -57,6 +55,7 @@ void BattleScene::update(float delta)
 	case BattleStatue::BattleStatue_Fight:
 	{
 		//update ships
+		ShipManager::getInstance()->Update(delta);
 	}
 		break;
 	case BattleStatue::BattleStatue_Settlement:

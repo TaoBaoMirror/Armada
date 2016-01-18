@@ -36,6 +36,8 @@ public:
 	static ShipManager* getInstance();
 
 	//-------------------------------------
+	void Update(float dt);
+	//-------------------------------------
 	void SetSelfShipSeat(TeamShipSeat seat);
 
 	ShipBase* BornTeamShip(TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
