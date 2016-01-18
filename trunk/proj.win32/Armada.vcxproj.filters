@@ -37,6 +37,9 @@
     <Filter Include="src\Common">
       <UniqueIdentifier>{c810ec07-213b-49d3-849a-5ed7132312af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Drive">
+      <UniqueIdentifier>{271446af-39b2-402c-b684-2652011206d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,15 @@
     <ClCompile Include="..\Classes\Ship\ShipManager.cpp">
       <Filter>src\Ship</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Drive\Drive.cpp">
+      <Filter>src\Drive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Drive\Vehicle.cpp">
+      <Filter>src\Drive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Drive\SteeringBehavior.cpp">
+      <Filter>src\Drive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +142,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Ship\ShipManager.h">
       <Filter>src\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Drive\Drive.h">
+      <Filter>src\Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Drive\Vehicle.h">
+      <Filter>src\Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Drive\SteeringBehavior.h">
+      <Filter>src\Drive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

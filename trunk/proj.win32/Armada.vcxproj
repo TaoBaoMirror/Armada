@@ -149,6 +149,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BattleMap\BattleMap.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMapManager.cpp" />
     <ClCompile Include="..\Classes\Common\CommonMethod.cpp" />
+    <ClCompile Include="..\Classes\Drive\Drive.cpp" />
+    <ClCompile Include="..\Classes\Drive\SteeringBehavior.cpp" />
+    <ClCompile Include="..\Classes\Drive\Vehicle.cpp" />
     <ClCompile Include="..\Classes\GameManager\GameManager.cpp" />
     <ClCompile Include="..\Classes\GameScene\BattleScene.cpp" />
     <ClCompile Include="..\Classes\GameScene\TitleScene.cpp" />
@@ -166,6 +169,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BattleMap\BattleMap.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMapManager.h" />
     <ClInclude Include="..\Classes\Common\CommonMethod.h" />
+    <ClInclude Include="..\Classes\Drive\Drive.h" />
+    <ClInclude Include="..\Classes\Drive\SteeringBehavior.h" />
+    <ClInclude Include="..\Classes\Drive\Vehicle.h" />
     <ClInclude Include="..\Classes\GameManager\GameManager.h" />
     <ClInclude Include="..\Classes\GameScene\BattleScene.h" />
     <ClInclude Include="..\Classes\GameScene\TitleScene.h" />
