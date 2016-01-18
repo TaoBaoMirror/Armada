@@ -26,6 +26,10 @@ public:
 	virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
 
 	virtual void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
+
+	void onHoldPress_Forward();
+	void onHoldPress_Left();
+	void onHoldPress_Right();
 	
 protected:
 	BattleStatue m_BTS;
@@ -33,6 +37,10 @@ protected:
 	void DeployTeamShip(TeamShipSeat seat);
 
 	void DeployEnemyShip(EnemyShipSeat seat);
+
+	bool m_bHoldPress_Forward;
+	bool m_bHoldPress_Left;
+	bool m_bHoldPress_Right;
 };
 
 #endif
