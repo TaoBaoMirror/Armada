@@ -18,6 +18,8 @@ public:
 
 	void Break();
 
+	cocos2d::Sprite* GetSprite();
+
 protected:
 	cocos2d::Rect m_BoundRect;
 

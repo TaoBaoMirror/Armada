@@ -115,9 +115,9 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 					//curTilePos = cocos2d::Vec2(layerSize.width*0.5f + j*layerSize.width, layerSize.height*0.5f + i*layerSize.height);
 
 					auto gid = pLandLayer->getTileGIDAt(cocos2d::Vec2(lx, ly));
-					cocos2d::Sprite* pTimeSprite = pLandLayer->getTileAt(cocos2d::Vec2(lx, ly));
+					cocos2d::Sprite* pTileSprite = pLandLayer->getTileAt(cocos2d::Vec2(lx, ly));
 
-					if (pTimeSprite != nullptr)
+					if (pTileSprite != nullptr)
 					{
 						int i = 100;
 					}
@@ -131,26 +131,24 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 						{
 							if (properties_Map["collision_type"].asString() == "1")
 							{
-								if (pTimeSprite != nullptr)
+								if (pTileSprite != nullptr)
 								{
 									//can not break
-									MapCollision* mc = new MapCollision(pTimeSprite);
-									mc->SetRect(pTimeSprite->getBoundingBox());
+									MapCollision* mc = new MapCollision(pTileSprite);
+									mc->SetRect(pTileSprite->getBoundingBox());
 									BattleMapManager::getInstance()->AddMapCollision(mc);
-									break;
 								}
 							}
 							else if (properties_Map["collision_type"].asString() == "2")
 							{
 								//can break
-								if (pTimeSprite != nullptr)
+								if (pTileSprite != nullptr)
 								{
 									//can not break
-									MapCollision* mc = new MapCollision(pTimeSprite);
+									MapCollision* mc = new MapCollision(pTileSprite);
 									mc->SetCanBreak();
-									mc->SetRect(pTimeSprite->getBoundingBox());
+									mc->SetRect(pTileSprite->getBoundingBox());
 									BattleMapManager::getInstance()->AddMapCollision(mc);
-									break;
 								}
 							}
 
