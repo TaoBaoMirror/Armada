@@ -28,6 +28,14 @@ public:
 	{
 		none = 0x00000,
 		arrive = 0x00002,
+
+		//
+		boost			= 0x01000,
+		breakdown		= 0x02000,
+		turn_left		= 0x04000,
+		turn_right		= 0x08000,
+		wall_avoidance	= 0x10000,
+
 	};
 public:
 	SteeringBehavior(Vehicle* agent);
@@ -47,12 +55,6 @@ public:
 	//
 	void AddSteeringForce(const cocos2d::Vec2& force);
 
-	void Boost();
-	void TurnLeft();
-	void TurnRight();
-	void BreakDown();
-
-
 protected:
 	//
 	Vehicle*		mVehicle;
@@ -67,11 +69,23 @@ protected:
 	//
 	bool      AccumulateForce(cocos2d::Vec2 &sf, const cocos2d::Vec2& ForceToAdd);
 	cocos2d::Vec2 Arrive(const cocos2d::Vec2& TargetPos, Deceleration deceleration);
+	cocos2d::Vec2 Boost();
+	cocos2d::Vec2 TurnLeft();
+	cocos2d::Vec2 TurnRight();
+	cocos2d::Vec2 BreakDown();
 
 public:
 	void ArriveOn(){ mFlags |= arrive; }
 	void ArriveOff(){ if(On(arrive))mFlags ^= arrive; }
-
+	//
+	void BoostOn(){ mFlags |= boost; }
+	void BoostOff(){ if (On(boost))mFlags ^= boost; }
+	void TurnLeftOn(){ mFlags |= turn_left; }
+	void TurnLeftOff(){ if (On(turn_left))mFlags ^= turn_left; }
+	void TurnRightOn(){ mFlags |= turn_right; }
+	void TurnRightOff(){ if (On(turn_right))mFlags ^= turn_right; }
+	void BreakDownOn(){ mFlags |= breakdown; }
+	void BreakDownOff(){ if (On(breakdown))mFlags ^= breakdown; }
 
 };
 

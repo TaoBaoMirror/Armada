@@ -19,15 +19,47 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 {
 	cocos2d::Vec2 force = cocos2d::Vec2::ZERO;
 
+	mSteeringForce = cocos2d::Vec2::ZERO;
+
+	if (On(wall_avoidance))
+	{
+
+	}
+
 	if (On(arrive))
 	{
-		mSteeringForce = cocos2d::Vec2::ZERO;
-
 		force = Arrive(mTarget, mDeceleration) * 1;
 		//
 		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
 	}
-	//如果没有行为，就是默认
+	
+	if (On(boost))
+	{
+		force = Boost();
+
+		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
+	}
+
+	if (On(breakdown))
+	{
+		force = BreakDown();
+
+		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
+	}
+
+	if (On(turn_left))
+	{
+		force = TurnLeft();
+
+		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
+	}
+
+	if (On(turn_right))
+	{
+		force = TurnRight();
+
+		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
+	}
 
 	return mSteeringForce;
 }
@@ -106,42 +138,47 @@ void SteeringBehavior::AddSteeringForce(const cocos2d::Vec2& force)
 	}
 }
 
-void SteeringBehavior::Boost()
+cocos2d::Vec2 SteeringBehavior::Boost()
 {
-	const float MaxBoost = 200;
-	mSteeringForce = mVehicle->Heading() * MaxBoost;
+	const float MaxBoost = 80;
 
-	CCLOG("Boost");
-
+	return mVehicle->Heading() * MaxBoost;
+	
 }
 
-void SteeringBehavior::TurnLeft()
+cocos2d::Vec2 SteeringBehavior::TurnLeft()
 {
 	const float SpeedToForceRate = 0.8f;
-	AddSteeringForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate * -1);
-	//
-	CCLOG("TurnLeft");
+
+	float speed = mVehicle->Speed();
+
+	if (speed < 0.01f) speed = 0;
+
+	return mVehicle->Side() * speed * SpeedToForceRate * -1;
+
 }
 
-void SteeringBehavior::TurnRight()
+cocos2d::Vec2 SteeringBehavior::TurnRight()
 {
 	const float SpeedToForceRate = 0.8f;
-	AddSteeringForce(mVehicle->Side() * mVehicle->Speed() * SpeedToForceRate);
 
-	CCLOG("TurnRight");
+	float speed = mVehicle->Speed();
 
+	if (speed < 0.01f) speed = 0;
+
+	return mVehicle->Side() * speed * SpeedToForceRate;
 }
 
-void SteeringBehavior::BreakDown()
+cocos2d::Vec2 SteeringBehavior::BreakDown()
 {
-	mSteeringForce = cocos2d::Vec2::ZERO;
-
-	if (mVehicle->Velocity().lengthSquared() >= 0.0001f)
+	if (mVehicle->SpeedSq() >= 0.00001f)
 	{
-		mSteeringForce = mVehicle->Velocity().getNormalized() * mVehicle->Speed() * -0.8f;
+		float speed = mVehicle->Speed();
 
+		if (speed < 0.001f) speed = 0;
+
+		return mVehicle->Heading() * speed * -0.8f;
 	}
 
-	CCLOG("BreakDown");
-
+	return cocos2d::Vec2::ZERO;
 }

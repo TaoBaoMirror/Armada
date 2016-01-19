@@ -181,25 +181,31 @@ void Ship_Carrack::EatItem( /*ItemType tItem*/)
 
 }
 
-void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t)
+void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t, ShipCtrlEvent evt)
 {
 	if (t == ShipCtrlType_Move)
 	{
-		Steering()->Boost();
+		if (evt == KeyPressed) Steering()->BoostOn();
+		if (evt == KeyReleased) Steering()->BoostOff();
 	}
-	else if (t == ShipCtrlType_Break)
+
+	if (t == ShipCtrlType_Break)
 	{
-		Steering()->BreakDown();
+		if (evt == KeyPressed) Steering()->BreakDownOn();
+		if (evt == KeyReleased) Steering()->BreakDownOff();
 	}
 
 	if (t ==  ShipCtrlType_TurnLeft)
 	{
-		Steering()->TurnLeft();
+		if (evt == KeyPressed) Steering()->TurnLeftOn();
+		if (evt == KeyReleased) Steering()->TurnLeftOff();
 	}
-	else if (t == ShipCtrlType_TurnRight)
-	{
-		Steering()->TurnRight();
 
+	
+	if (t == ShipCtrlType_TurnRight)
+	{
+		if (evt == KeyPressed) Steering()->TurnRightOn();
+		if (evt == KeyReleased) Steering()->TurnRightOff();
 	}
 
 }
