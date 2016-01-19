@@ -16,6 +16,13 @@ enum ShipCtrlType
 	//ShipCtrlType_Stop,
 };
 
+enum ShipCtrlEvent
+{
+	KeyPressed = 0,
+	KeyDown,
+	KeyReleased
+};
+
 class ShipBase : public cocos2d::Sprite , public Vehicle
 {
 protected:
@@ -79,7 +86,7 @@ public:
 	//------
 	virtual void EatItem(/*ItemType tItem*/){}
 
-	virtual void ShipBattleCtrl(ShipCtrlType type);
+	virtual void ShipBattleCtrl(ShipCtrlType type, ShipCtrlEvent evt);
 
 public:
 	//ShipFSM* m_pFSM;

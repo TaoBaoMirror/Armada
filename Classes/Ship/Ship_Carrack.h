@@ -51,7 +51,7 @@ public:
 	//------
 	virtual void EatItem(/*ItemType tItem*/)override;
 	////  Controller!
-	virtual void ShipBattleCtrl(ShipCtrlType t) override;
+	virtual void ShipBattleCtrl(ShipCtrlType t, ShipCtrlEvent evt) override;
 
 	//////////////////////////////////////////////////////////////////////////
 	//

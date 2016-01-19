@@ -155,34 +155,34 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		{
 			m_bHoldPress_Forward = true;
 
-			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move, ShipCtrlEvent::KeyPressed);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_S)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Break);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Break, ShipCtrlEvent::KeyPressed);
 		}
 		//Turn
 		if (keyCode == EventKeyboard::KeyCode::KEY_A)
 		{
 			m_bHoldPress_Left = true;
 
-			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft, ShipCtrlEvent::KeyPressed);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_D)
 		{
 			m_bHoldPress_Right = true;
 
-			//pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight, ShipCtrlEvent::KeyPressed);
 		}
 
 		//Attack
 		if (keyCode == EventKeyboard::KeyCode::KEY_G)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireLeft);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireLeft, ShipCtrlEvent::KeyPressed);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_H)
 		{
-			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireRight);
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireRight, ShipCtrlEvent::KeyPressed);
 		}
 
 
@@ -196,20 +196,31 @@ void BattleScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (m_BTS == BattleStatue::BattleStatue_Fight)
 	{
+		ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
 		//Move
 		if (keyCode == EventKeyboard::KeyCode::KEY_W)
 		{
 			m_bHoldPress_Forward = false;
+
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move, ShipCtrlEvent::KeyReleased);
+		}
+		else if (keyCode == EventKeyboard::KeyCode::KEY_S)
+		{
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Break, ShipCtrlEvent::KeyReleased);
 		}
 
 		//Turn
 		if (keyCode == EventKeyboard::KeyCode::KEY_A)
 		{
 			m_bHoldPress_Left = false;
+
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft, ShipCtrlEvent::KeyReleased);
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_D)
 		{
 			m_bHoldPress_Right = false;
+
+			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight, ShipCtrlEvent::KeyReleased);
 		}
 	}
 }
@@ -218,20 +229,20 @@ void BattleScene::onHoldPress_Forward()
 {
 	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
 
-	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move);
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move, ShipCtrlEvent::KeyDown);
 }
 
 void BattleScene::onHoldPress_Left()
 {
 	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
 
-	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft);
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnLeft, ShipCtrlEvent::KeyDown);
 }
 
 void BattleScene::onHoldPress_Right()
 {
 	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
 
-	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight);
+	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight, ShipCtrlEvent::KeyDown);
 }
 
