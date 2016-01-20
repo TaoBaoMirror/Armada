@@ -23,7 +23,20 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 {
 	cocos2d::Vec2 force = cocos2d::Vec2::ZERO;
 
+	mTorque = 0;
+
 	mSteeringForce = cocos2d::Vec2::ZERO;
+
+	//将前进和转向拆开了
+	if (On(turn_left))
+	{
+		mTorque += TurnLeft();
+	}
+
+	if (On(turn_right))
+	{
+		mTorque += TurnRight();
+	}
 
 	if (On(arrive))
 	{
@@ -47,13 +60,6 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
 	}
 
-	if (On(turn_left))
-	{
-		force = TurnLeft();
-
-		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
-	}
-
 	if (On(block_avoidance))
 	{
 		if (BlockAvoidance())
@@ -62,12 +68,7 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 		}
 	}
 
-	if (On(turn_right))
-	{
-		force = TurnRight();
 
-		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
-	}
 
 	return mSteeringForce;
 }
@@ -136,16 +137,6 @@ void SteeringBehavior::SetTarget(const cocos2d::Vec2& t)
 	mTarget = t;
 }
 
-void SteeringBehavior::AddSteeringForce(const cocos2d::Vec2& force)
-{
-	mSteeringForce += force;
-	//
-	if (mVehicle->MaxForce() - mSteeringForce.length() <= 0)
-	{
-		mSteeringForce = mSteeringForce.getNormalized() * mVehicle->MaxForce();
-	}
-}
-
 cocos2d::Vec2 SteeringBehavior::Boost()
 {
 	const float MaxBoost = 80;
@@ -154,27 +145,19 @@ cocos2d::Vec2 SteeringBehavior::Boost()
 	
 }
 
-cocos2d::Vec2 SteeringBehavior::TurnLeft()
+float SteeringBehavior::TurnLeft()
 {
-	const float SpeedToForceRate = 0.8f;
+	const float MaxTorque = 3.14f * 2;
 
-	float speed = mVehicle->Speed();
-
-	if (speed < 0.01f) speed = 0.01f;
-
-	return mVehicle->Side() * speed * SpeedToForceRate * -1;
+	return MaxTorque * counter_clockwise;
 
 }
 
-cocos2d::Vec2 SteeringBehavior::TurnRight()
+float SteeringBehavior::TurnRight()
 {
-	const float SpeedToForceRate = 0.8f;
+	const float MaxTorque = 3.14f * 2;
 
-	float speed = mVehicle->Speed();
-
-	if (speed < 0.01f) speed = 0.01f;
-
-	return mVehicle->Side() * speed * SpeedToForceRate;
+	return MaxTorque * clockwise;
 }
 
 cocos2d::Vec2 SteeringBehavior::BreakDown()

@@ -1,7 +1,22 @@
 #include "Vehicle.h"
 #include "SteeringBehavior.h"
 #include "World.h"
+//////////////////////////////////////////////////////////////////////////
 
+/*常量*/
+
+const cocos2d::Vec2 DefaultHeading = cocos2d::Vec2(0, 1);
+const cocos2d::Vec2 DefaultSide = cocos2d::Vec2(1, 0);
+const cocos2d::Vec2 DefaultVelocity = cocos2d::Vec2(0, 0);
+const float DefaultMass = 1;
+const float DefaultMaxSpeed = 100;
+const float DefaultTurnRate = 30;
+const float DefaultForce = 100;
+const cocos2d::Vec2 DefaultShipPos = cocos2d::Vec2::ZERO;
+const float DefaultRadius = 6;
+//
+const float DefaultAngularVelocity = 0;
+const float DefaultmMaxAngularSpeed = 3.14f * 3;
 
 Vehicle::Vehicle(World* world)
 {
@@ -22,11 +37,14 @@ void Vehicle::Tick(float time_elapsed)
 	cocos2d::Vec2 OldPos = Pos();
 	cocos2d::Vec2 SteeringForce = cocos2d::Vec2::ZERO;
 	SteeringForce = mSteering->Calculate();
+	float Torque = mSteering->Torque();
 
 	//加速度
 	cocos2d::Vec2 acceleration = SteeringForce / mMass;
+	float		  angular_acceleration = Torque / mMass;
 	//更新速度
 	mVelocity += acceleration * time_elapsed;
+	mAngularVelocity += angular_acceleration * time_elapsed;
 	//
 	if (hasResistance)
 	{
@@ -40,6 +58,16 @@ void Vehicle::Tick(float time_elapsed)
 		mVelocity.scale(mMaxSpeed);
 	}
 
+	if (abs(mAngularVelocity) > mMaxAngularSpeed)
+	{
+		mAngularVelocity = mAngularVelocity / abs(mAngularVelocity) * mMaxAngularSpeed;
+	}
+	//更新头部
+	float angular = mAngularVelocity * time_elapsed;
+	mHeading.rotate(cocos2d::Vec2::ZERO, angular);
+	mSide = mHeading.getRPerp();
+	//只需要驱动速度的大小累积值，方向是头部方向
+	mVelocity = Heading() * Speed();
 	//更新位置
 	auto mPosAdd = mVelocity * time_elapsed;
 	mPos += mPosAdd;
@@ -48,20 +76,14 @@ void Vehicle::Tick(float time_elapsed)
 	{
 		mPos -= mPosAdd;
 	}
-	
+
+
 
 	//如果速度不为0，更新头部
+	/*
 	if (mVelocity.lengthSquared() > 0.00001f)
 	{
 		SetHeading(mVelocity.getNormalized());
-	}
-
-
-
-	/*
-	if (Steering()->isSpacePartitioningOn())
-	{
-		World()->CellSpace()->UpdateEntity(this, OldPos);
 	}
 	*/
 }
@@ -88,4 +110,8 @@ void Vehicle::InitData()
 	mMaxSpeed = DefaultMaxSpeed;
 	mMaxTurnRate = DefaultTurnRate;
 	mRadius = DefaultRadius;
+	//
+	mAngularVelocity = DefaultAngularVelocity;
+	mMaxAngularSpeed = DefaultmMaxAngularSpeed;
+
 }

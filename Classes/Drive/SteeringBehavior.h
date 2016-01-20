@@ -39,11 +39,18 @@ public:
 
 
 	};
+
+	enum rot_dir
+	{
+		clockwise = -1,
+		counter_clockwise = 1
+	};
 public:
 	SteeringBehavior(Vehicle* agent);
 	virtual ~SteeringBehavior();
 	//
 	cocos2d::Vec2 Calculate();
+	float		  Torque(){ return mTorque; }
 	//
 	void SetTarget(const cocos2d::Vec2& t);
 	void SetDeceleration(Deceleration d){ mDeceleration = d; }
@@ -55,14 +62,14 @@ public:
 	//计算垂直于头部的驱动力
 	float    SideComponent();
 	//
-	void	AddSteeringForce(const cocos2d::Vec2& force);
-	bool		  BlockAvoidance();
+	bool	 BlockAvoidance();
 
 protected:
 	//
 	Vehicle*		mVehicle;
 	//驱动力
 	cocos2d::Vec2   mSteeringForce;
+	float			mTorque;
 	//
 	cocos2d::Vec2   mTarget;
 	//
@@ -70,11 +77,11 @@ protected:
 	//
 	int				mFlags;
 	//
-	bool      AccumulateForce(cocos2d::Vec2 &sf, const cocos2d::Vec2& ForceToAdd);
+	bool		AccumulateForce(cocos2d::Vec2 &sf, const cocos2d::Vec2& ForceToAdd);
 	cocos2d::Vec2 Arrive(const cocos2d::Vec2& TargetPos, Deceleration deceleration);
 	cocos2d::Vec2 Boost();
-	cocos2d::Vec2 TurnLeft();
-	cocos2d::Vec2 TurnRight();
+	float TurnLeft();
+	float TurnRight();
 	cocos2d::Vec2 BreakDown();
 
 public:

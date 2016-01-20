@@ -31,6 +31,8 @@ public:
 	double					TimeElapsed()const{ return mTimeElapsed; }
 	SteeringBehavior*const  Steering()const{ return mSteering; }
 	World*					GetWorld()  { return mWorld; }
+	//
+	void					Pin(){ SetAngularVelocity(0); }
 protected:
 	//
 	World*				mWorld;
