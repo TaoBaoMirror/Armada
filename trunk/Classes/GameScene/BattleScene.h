@@ -34,9 +34,11 @@ public:
 protected:
 	BattleStatue m_BTS;
 
-	void DeployTeamShip(TeamShipSeat seat);
+	//void DeployTeamShip(TeamShipSeat seat);
 
-	void DeployEnemyShip(EnemyShipSeat seat);
+	//void DeployEnemyShip(TeamShipSeat seat);
+
+	void DeployShip(BornEdgeType type, TeamShipSeat seat);
 
 	bool m_bHoldPress_Forward;
 	bool m_bHoldPress_Left;

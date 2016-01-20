@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Drive/Vehicle.h"
+#include "GameScene/BattleSceneCommon.h"
 
 
 enum ShipCtrlType
@@ -88,6 +89,9 @@ public:
 
 	virtual void ShipBattleCtrl(ShipCtrlType type, ShipCtrlEvent evt);
 
+	void SetBelongType(BornEdgeType type);
+	BornEdgeType GetBelongType();
+
 public:
 	//ShipFSM* m_pFSM;
 
@@ -105,6 +109,8 @@ protected:
 	cocos2d::Vec2 m_CurDirect;
 
 	cocos2d::Size m_SelfBoundBoxSize;
+
+	BornEdgeType m_bBelongType;
 };
 
 #endif //__SHIP_BASE_H__

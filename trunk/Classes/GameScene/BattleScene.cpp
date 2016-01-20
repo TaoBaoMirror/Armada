@@ -41,11 +41,16 @@ bool BattleScene::init()
 	m_BTS = BattleStatue::BattleStatue_Ready;	
 
 	//test init ships	
-	BattleMapManager::getInstance()->SetTeamBornEdge(BornEdgeType::BornEdgeType_Left);
+	//DeployTeamShip(TeamShipSeat::TeamShipSeat_1);
 
-	DeployTeamShip(TeamShipSeat::TeamShipSeat_1);
+	//DeployEnemyShip(TeamShipSeat::TeamShipSeat_1);
 
-	DeployEnemyShip(EnemyShipSeat::EnemyShipSeat_1);
+	DeployShip(BornEdgeType::BornEdgeType_Left, TeamShipSeat::TeamShipSeat_1);
+
+	DeployShip(BornEdgeType::BornEdgeType_Right, TeamShipSeat::TeamShipSeat_1);
+
+	ShipManager::getInstance()->SetSelfShipSeat(BornEdgeType::BornEdgeType_Left, TeamShipSeat::TeamShipSeat_1);
+	//end
 
 	setKeyboardEnabled(true);
 
@@ -89,51 +94,64 @@ void BattleScene::update(float delta)
 	}	
 	
 }
+//
+//void BattleScene::DeployTeamShip(TeamShipSeat seat)
+//{
+//	//get cur map
+//	BattleMap* curmap = BattleMapManager::getInstance()->GetBattleMap();
+//
+//	ShipBase* pTeamShip = ShipManager::getInstance()->BornTeamShip(seat);
+//	curmap->GetShipLayer()->addChild(pTeamShip, 10);
+//
+//	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
+//	{
+//		//pTeamShip->setPosition(curmap->GetLeftBornPoint());
+//		pTeamShip->SetPos(curmap->GetLeftBornPoint());
+//	}
+//	else
+//	{
+//		//pTeamShip->setPosition(curmap->GetRightBornPoint());
+//		pTeamShip->SetPos(curmap->GetRightBornPoint());
+//
+//	}
+//	
+//	
+//}
+//
+//void BattleScene::DeployEnemyShip(TeamShipSeat seat)
+//{
+//	//get cur map
+//	BattleMap* curmap = BattleMapManager::getInstance()->GetBattleMap();
+//
+//	ShipBase* pEnemyShip = ShipManager::getInstance()->BornEnemyShip(seat);
+//	curmap->GetShipLayer()->addChild(pEnemyShip, 10);
+//	
+//	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
+//	{
+//		//pEnemyShip->setPosition(curmap->GetRightBornPoint());	
+//		pEnemyShip->SetPos(curmap->GetRightBornPoint());
+//
+//	}
+//	else
+//	{
+//		//pEnemyShip->setPosition(curmap->GetLeftBornPoint());
+//		pEnemyShip->SetPos(curmap->GetLeftBornPoint());
+//
+//	}
+//}
 
-void BattleScene::DeployTeamShip(TeamShipSeat seat)
+
+void BattleScene::DeployShip(BornEdgeType type, TeamShipSeat seat)
 {
-	//get cur map
-	BattleMap* curmap = BattleMapManager::getInstance()->GetBattleMap();
-
-	ShipBase* pTeamShip = ShipManager::getInstance()->BornTeamShip(seat);
-	curmap->GetShipLayer()->addChild(pTeamShip, 10);
-
-	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
+	NavalPort* pPort = BattleMapManager::getInstance()->GetNavalPort(type);
+	if (pPort != nullptr)
 	{
-		//pTeamShip->setPosition(curmap->GetLeftBornPoint());
-		pTeamShip->SetPos(curmap->GetLeftBornPoint());
-	}
-	else
-	{
-		//pTeamShip->setPosition(curmap->GetRightBornPoint());
-		pTeamShip->SetPos(curmap->GetRightBornPoint());
+		pPort->AddReadyBorn(seat);
 
+		pPort->BornShipDirect(seat);
 	}
-	
-	
 }
 
-void BattleScene::DeployEnemyShip(EnemyShipSeat seat)
-{
-	//get cur map
-	BattleMap* curmap = BattleMapManager::getInstance()->GetBattleMap();
-
-	ShipBase* pEnemyShip = ShipManager::getInstance()->BornEnemyShip(seat);
-	curmap->GetShipLayer()->addChild(pEnemyShip, 10);
-	
-	if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType_Left)
-	{
-		//pEnemyShip->setPosition(curmap->GetRightBornPoint());	
-		pEnemyShip->SetPos(curmap->GetRightBornPoint());
-
-	}
-	else
-	{
-		//pEnemyShip->setPosition(curmap->GetLeftBornPoint());
-		pEnemyShip->SetPos(curmap->GetLeftBornPoint());
-
-	}
-}
 
 void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {

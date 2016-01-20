@@ -1,6 +1,8 @@
 #include "TitleScene.h"
 #include "GameManager\GameManager.h"
 #include "ResDef.h"
+#include "BattleMap\BattleMapManager.h"
+#include "BattleSceneCommon.h"
 
 USING_NS_CC;
 
@@ -50,6 +52,7 @@ void TitleScene::onEnter()
 	}
 	//
 	//Test
+	BattleMapManager::getInstance()->SetTeamBornEdge(BornEdgeType::BornEdgeType_Left);
 	GameManager::getInstance()->EnterBattleMap(0);
 	//end
 }

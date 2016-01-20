@@ -18,6 +18,7 @@ BattleMapManager* BattleMapManager::getInstance()
 
 BattleMapManager::BattleMapManager() :
 m_CurBattleMap(nullptr),
+m_NavalBase(nullptr),
 m_bTeamBornEdge(BornEdgeType::BornEdgeType_Left)
 {
 }
@@ -87,7 +88,7 @@ void BattleMapManager::RemoveMapCollision(MapCollision* mc)
 	}
 }
 
-bool BattleMapManager::IsCollideIntersect(cocos2d::Rect& rec)
+bool BattleMapManager::IsCollideMapObstacle(cocos2d::Rect& rec)
 {
 	std::vector<MapCollision*>::iterator it = m_MapCollisions.begin();
 	for (; it != m_MapCollisions.end(); ++it)
@@ -104,5 +105,74 @@ bool BattleMapManager::IsCollideIntersect(cocos2d::Rect& rec)
 
 	return false;
 }
+
+bool BattleMapManager::IsCollideNavalBase(ShipBase* pShip)
+{
+	if (m_NavalBase->CheckCollideShip(pShip) == true)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool BattleMapManager::IsCollideNavalFlag(ShipBase* pShip)
+{
+	std::map<BornEdgeType, NavalFlagBase*>::iterator it = m_NavalFlagBases.begin();
+	for (; it != m_NavalFlagBases.end(); ++it)
+	{
+		NavalFlagBase* pFlagbase = it->second;
+		if (pFlagbase->CheckCollideShip(pShip))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void BattleMapManager::SetNavalBase(NavalBase* naval)
+{
+	m_NavalBase = naval;
+}
+
+NavalBase* BattleMapManager::GetNavalBase()
+{
+	return m_NavalBase;
+}
+
+void BattleMapManager::SetNavalFlagBase(BornEdgeType type, NavalFlagBase* pFlagBase)
+{
+	m_NavalFlagBases[type] = pFlagBase;
+}
+
+NavalFlagBase* BattleMapManager::GetNavalFlagBase(BornEdgeType type)
+{
+	std::map<BornEdgeType, NavalFlagBase*>::iterator it = m_NavalFlagBases.find(type);
+	if (it != m_NavalFlagBases.end())
+	{
+		return it->second;
+	}
+
+	return nullptr;
+}
+
+void BattleMapManager::SetNavalPort(BornEdgeType type, NavalPort* pPort)
+{
+	m_NavalPorts[type] = pPort;
+}
+
+NavalPort* BattleMapManager::GetNavalPort(BornEdgeType type)
+{
+	std::map<BornEdgeType, NavalPort*>::iterator it = m_NavalPorts.find(type);
+	if (it != m_NavalPorts.end())
+	{
+		return it->second;
+	}
+
+	return nullptr;
+}
+
+
+
 
 

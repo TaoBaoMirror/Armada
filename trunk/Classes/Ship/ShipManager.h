@@ -13,15 +13,15 @@ enum TeamShipSeat
 	TeamShipSeat_4,
 	TeamShipSeat_5,
 };
-
-enum EnemyShipSeat
-{
-	EnemyShipSeat_1 = 0,
-	EnemyShipSeat_2,
-	EnemyShipSeat_3,
-	EnemyShipSeat_4,
-	EnemyShipSeat_5,
-};
+//
+//enum EnemyShipSeat
+//{
+//	EnemyShipSeat_1 = 0,
+//	EnemyShipSeat_2,
+//	EnemyShipSeat_3,
+//	EnemyShipSeat_4,
+//	EnemyShipSeat_5,
+//};
 
 enum ShipType
 {
@@ -38,17 +38,21 @@ public:
 	//-------------------------------------
 	void Update(float dt);
 	//-------------------------------------
-	void SetSelfShipSeat(TeamShipSeat seat);
+	void SetSelfShipSeat(BornEdgeType borntype,TeamShipSeat seat);
 
-	ShipBase* BornTeamShip(TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
+	//ShipBase* BornTeamShip(TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
 
-	ShipBase* BornEnemyShip(EnemyShipSeat num, ShipType type = ShipType::ShipType_Carrack);
+	//ShipBase* BornEnemyShip(TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
+
+	ShipBase* BornShip(BornEdgeType borntype, TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
 
 	void ClearAll();
 
-	ShipBase* GetTeamShip(TeamShipSeat num);
+	//ShipBase* GetTeamShip(TeamShipSeat num);
 
-	ShipBase* GetEnemyShip(EnemyShipSeat num);
+	//ShipBase* GetEnemyShip(TeamShipSeat num);
+
+	ShipBase* GetShip(BornEdgeType borntype, TeamShipSeat num);
 
 	ShipBase* GetSelfShip();
 	//-------------------------------------
@@ -59,11 +63,12 @@ protected:
 	static ShipManager* m_Instance;
 
 protected:
+	BornEdgeType m_SelfBornEdgeType;
 	TeamShipSeat m_SelfShipSeat;
 
-	std::map<TeamShipSeat, ShipBase*> m_TeamShips;
+	std::map<TeamShipSeat, ShipBase*> m_Team_Left_Ships;
 
-	std::map<EnemyShipSeat, ShipBase*> m_EnemyShips;
+	std::map<TeamShipSeat, ShipBase*> m_Team_Right_Ships;
 };
 
 #endif//__SHIP_MANAGER_H__
