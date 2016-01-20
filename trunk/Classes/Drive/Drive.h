@@ -13,21 +13,6 @@
 #define Drive_h__
 
 #include "cocos2d.h"
-//////////////////////////////////////////////////////////////////////////
-
-/*³£Á¿*/
-
-const cocos2d::Vec2 DefaultHeading = cocos2d::Vec2(0, 1);
-const cocos2d::Vec2 DefaultSide = cocos2d::Vec2(1, 0);
-const cocos2d::Vec2 DefaultVelocity = cocos2d::Vec2(0, 0);
-const float DefaultMass = 1;
-const float DefaultMaxSpeed = 100;
-const float DefaultTurnRate = 30;
-const float DefaultForce = 100;
-const cocos2d::Vec2 DefaultShipPos = cocos2d::Vec2::ZERO;
-const float DefaultRadius = 6;
-
-
 
 //////////////////////////////////////////////////////////////////////////
 class Drive
@@ -64,6 +49,13 @@ public:
 
 	float	Radius()const { return mRadius; }
 	void	SetRadius(float r){ mRadius = r; }
+	//////////////////////////////////////////////////////////////////////////
+	float   MaxAngularSpeed()const{ return mMaxAngularSpeed; }
+	void	SetMaxAngularSpeed(double new_speed){ mMaxAngularSpeed = new_speed; }
+
+	float	AngularVelocity() const{ return mAngularVelocity; }
+	void	SetAngularVelocity(float NewVel){ mAngularVelocity = NewVel; }
+
 protected:
 	cocos2d::Vec2	mPos;
 	cocos2d::Vec2	mVelocity;
@@ -75,6 +67,10 @@ protected:
 	float			mMaxTurnRate;
 	//
 	float			mRadius;
+	//////////////////////////////////////////////////////////////////////////
+	float			mAngularVelocity;
+	float			mMaxAngularSpeed;
+
 
 private:
 public:

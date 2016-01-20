@@ -222,6 +222,11 @@ void BattleScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight, ShipCtrlEvent::KeyReleased);
 		}
+		
+		if (!m_bHoldPress_Left && !m_bHoldPress_Right)
+		{
+			pShip->Pin();
+		}
 	}
 }
 
