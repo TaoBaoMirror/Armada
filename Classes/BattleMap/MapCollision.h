@@ -20,6 +20,8 @@ public:
 
 	cocos2d::Sprite* GetSprite();
 
+	const cocos2d::Rect& GetRect() const { return m_BoundRect; }
+
 protected:
 	cocos2d::Rect m_BoundRect;
 

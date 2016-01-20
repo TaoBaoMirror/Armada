@@ -1,5 +1,6 @@
 #include "BattleMapManager.h"
 #include "BattleMap.h"
+#include "Drive/World.h"
 
 BattleMapManager* BattleMapManager::m_Instance = nullptr;
 
@@ -69,6 +70,8 @@ BornEdgeType BattleMapManager::GetTeamBornEdge()
 void BattleMapManager::AddMapCollision(MapCollision* mc)
 {
 	m_MapCollisions.push_back(mc);
+	//--TEST
+	World::GetInstance()->AddBlock(mc->GetRect(),true);
 }
 
 void BattleMapManager::RemoveMapCollision(MapCollision* mc)

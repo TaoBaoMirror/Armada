@@ -25,6 +25,7 @@ const float DefaultMaxSpeed = 100;
 const float DefaultTurnRate = 30;
 const float DefaultForce = 100;
 const cocos2d::Vec2 DefaultShipPos = cocos2d::Vec2::ZERO;
+const float DefaultRadius = 6;
 
 
 
@@ -60,6 +61,9 @@ public:
 
 	float	MaxTurnRate()const{ return mMaxTurnRate; }
 	void	SetMaxTurnRate(double val){ mMaxTurnRate = val; }
+
+	float	Radius()const { return mRadius; }
+	void	SetRadius(float r){ mRadius = r; }
 protected:
 	cocos2d::Vec2	mPos;
 	cocos2d::Vec2	mVelocity;
@@ -69,6 +73,8 @@ protected:
 	float			mMaxSpeed;
 	float			mMaxForce;
 	float			mMaxTurnRate;
+	//
+	float			mRadius;
 
 private:
 public:
