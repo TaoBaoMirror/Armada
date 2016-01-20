@@ -1,6 +1,8 @@
 #include "SteeringBehavior.h"
 #include "Vehicle.h"
 #include "math.h"
+#include "Block.h"
+#include "World.h"
 
 SteeringBehavior::SteeringBehavior(Vehicle* agent) :mVehicle(agent)
 {
@@ -8,6 +10,8 @@ SteeringBehavior::SteeringBehavior(Vehicle* agent) :mVehicle(agent)
 	mSteeringForce = cocos2d::Vec2::ZERO;
 	mTarget = cocos2d::Vec2::ZERO;
 	mFlags = none;
+	//
+	BlockAvoidanceOn();
 }
 
 SteeringBehavior::~SteeringBehavior()
@@ -21,17 +25,13 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 
 	mSteeringForce = cocos2d::Vec2::ZERO;
 
-	if (On(wall_avoidance))
-	{
-
-	}
-
 	if (On(arrive))
 	{
 		force = Arrive(mTarget, mDeceleration) * 1;
 		//
 		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
 	}
+
 	
 	if (On(boost))
 	{
@@ -52,6 +52,14 @@ cocos2d::Vec2 SteeringBehavior::Calculate()
 		force = TurnLeft();
 
 		if (!AccumulateForce(mSteeringForce, force)) return mSteeringForce;
+	}
+
+	if (On(block_avoidance))
+	{
+		if (BlockAvoidance())
+		{
+
+		}
 	}
 
 	if (On(turn_right))
@@ -152,7 +160,7 @@ cocos2d::Vec2 SteeringBehavior::TurnLeft()
 
 	float speed = mVehicle->Speed();
 
-	if (speed < 0.01f) speed = 0;
+	if (speed < 0.01f) speed = 0.01f;
 
 	return mVehicle->Side() * speed * SpeedToForceRate * -1;
 
@@ -164,7 +172,7 @@ cocos2d::Vec2 SteeringBehavior::TurnRight()
 
 	float speed = mVehicle->Speed();
 
-	if (speed < 0.01f) speed = 0;
+	if (speed < 0.01f) speed = 0.01f;
 
 	return mVehicle->Side() * speed * SpeedToForceRate;
 }
@@ -181,4 +189,42 @@ cocos2d::Vec2 SteeringBehavior::BreakDown()
 	}
 
 	return cocos2d::Vec2::ZERO;
+}
+
+bool SteeringBehavior::BlockAvoidance()
+{
+	const std::vector<Block>& blocks = mVehicle->GetWorld()->GetBlocks();
+	std::vector<Block>::const_iterator it = blocks.begin();
+
+	for (; it != blocks.end();++it)
+	{
+		bool col = it->IsCollision(mVehicle->Radius(), mVehicle->Pos());
+		//
+		if (col)
+		{
+			/*
+			const std::vector<Wall>& walls = it->GetWalls();
+			std::vector<Wall>::const_iterator w_it = walls.begin();
+
+			for (; w_it != walls.end();++w_it)
+			{
+				if (w_it->LineSegmentCircleIntersection(mVehicle->Pos(), mVehicle->Radius()))
+				{
+					cocos2d::Vec2& I = mVehicle->Velocity();
+					cocos2d::Vec2& N = w_it->N();
+					cocos2d::Vec2 refVec = I - 2 * I.dot(N) * N;
+					mSteeringForce = refVec.getNormalized() * 80;
+					mVehicle->SetVelocity(cocos2d::Vec2::ZERO);
+					return true;
+
+				}
+			}
+			*/
+			mVehicle->SetVelocity(cocos2d::Vec2::ZERO);
+			mSteeringForce = cocos2d::Vec2::ZERO;
+			return true;
+		}
+	}
+
+	return false;
 }

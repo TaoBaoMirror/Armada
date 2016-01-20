@@ -35,6 +35,8 @@ public:
 		turn_left		= 0x04000,
 		turn_right		= 0x08000,
 		wall_avoidance	= 0x10000,
+		block_avoidance = 0x20000,
+
 
 	};
 public:
@@ -53,7 +55,8 @@ public:
 	//计算垂直于头部的驱动力
 	float    SideComponent();
 	//
-	void AddSteeringForce(const cocos2d::Vec2& force);
+	void	AddSteeringForce(const cocos2d::Vec2& force);
+	bool		  BlockAvoidance();
 
 protected:
 	//
@@ -86,6 +89,10 @@ public:
 	void TurnRightOff(){ if (On(turn_right))mFlags ^= turn_right; }
 	void BreakDownOn(){ mFlags |= breakdown; }
 	void BreakDownOff(){ if (On(breakdown))mFlags ^= breakdown; }
+
+	//
+	void BlockAvoidanceOn(){ mFlags |= block_avoidance; }
+	void BlockAvoidanceOff(){ if (On(block_avoidance))mFlags ^= block_avoidance; }
 
 };
 

@@ -13,12 +13,14 @@
 #define Vehicle_h__
 #include "cocos2d.h"
 #include "Drive.h"
+
+class World;
 class SteeringBehavior;
 
 class Vehicle : public Drive
 {
 public:
-	Vehicle(void* world = nullptr);
+	Vehicle(World* world);
 	~Vehicle();
 	//
 	void Tick(float);
@@ -28,10 +30,10 @@ public:
 	//
 	double					TimeElapsed()const{ return mTimeElapsed; }
 	SteeringBehavior*const  Steering()const{ return mSteering; }
-	void*const				World()const{ return mWorld; }
+	World*					GetWorld()  { return mWorld; }
 protected:
 	//
-	void*				mWorld;
+	World*				mWorld;
 	//
 	SteeringBehavior*	mSteering;
 	float				mTimeElapsed;

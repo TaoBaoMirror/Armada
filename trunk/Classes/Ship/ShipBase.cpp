@@ -1,6 +1,9 @@
 #include "ShipBase.h"
+#include "Drive/Vehicle.h"
+#include "Drive/World.h"
 
-ShipBase::ShipBase()
+ShipBase::ShipBase(): 
+	Vehicle(World::GetInstance())
 {
 }
 

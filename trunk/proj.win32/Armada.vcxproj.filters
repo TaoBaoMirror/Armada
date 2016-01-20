@@ -108,6 +108,12 @@
     <ClCompile Include="..\Classes\BattleMap\MapCollision.cpp">
       <Filter>src\BattleMap</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Drive\Block.cpp">
+      <Filter>src\Drive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Drive\World.cpp">
+      <Filter>src\Drive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -172,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BattleMap\MapCollision.h">
       <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Drive\Block.h">
+      <Filter>src\Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Drive\World.h">
+      <Filter>src\Drive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

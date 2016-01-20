@@ -1,7 +1,9 @@
 #include "Vehicle.h"
 #include "SteeringBehavior.h"
+#include "World.h"
 
-Vehicle::Vehicle(void* world)
+
+Vehicle::Vehicle(World* world)
 {
 	mWorld = world;
 	mTimeElapsed = 0.f;
@@ -39,7 +41,14 @@ void Vehicle::Tick(float time_elapsed)
 	}
 
 	//更新位置
-	mPos += mVelocity * time_elapsed;
+	auto mPosAdd = mVelocity * time_elapsed;
+	mPos += mPosAdd;
+
+	if (Steering()->BlockAvoidance())
+	{
+		mPos -= mPosAdd;
+	}
+	
 
 	//如果速度不为0，更新头部
 	if (mVelocity.lengthSquared() > 0.00001f)
@@ -47,8 +56,7 @@ void Vehicle::Tick(float time_elapsed)
 		SetHeading(mVelocity.getNormalized());
 	}
 
-	//卡住边界
-	//WrapAround(mPos, mWorld->cxClient(), mWorld->cyClient());
+
 
 	/*
 	if (Steering()->isSpacePartitioningOn())
@@ -79,4 +87,5 @@ void Vehicle::InitData()
 	mMaxForce = DefaultForce;
 	mMaxSpeed = DefaultMaxSpeed;
 	mMaxTurnRate = DefaultTurnRate;
+	mRadius = DefaultRadius;
 }
