@@ -72,3 +72,13 @@ void ShipBase::InitShip()
 {
 
 }
+//----------------------------------
+void ShipBase::SetBelongType(BornEdgeType type)
+{
+	m_bBelongType = type;
+}
+
+BornEdgeType ShipBase::GetBelongType()
+{
+	return m_bBelongType;
+}

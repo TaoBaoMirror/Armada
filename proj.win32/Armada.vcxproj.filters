@@ -114,6 +114,21 @@
     <ClCompile Include="..\Classes\Drive\World.cpp">
       <Filter>src\Drive</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\NavalBase.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\NavalFlag.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\NavalFlagBase.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\NavalPort.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\ReadyBornShip.cpp">
+      <Filter>src\BattleMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -184,6 +199,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Drive\World.h">
       <Filter>src\Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\NavalBase.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\NavalFlag.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\NavalFlagBase.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\NavalPort.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\ReadyBornShip.h">
+      <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene\BattleSceneCommon.h">
+      <Filter>src\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

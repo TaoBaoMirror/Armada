@@ -74,13 +74,21 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 				{
 					cocos2d::Vec2 leftpos = cocos2d::Vec2(x, y);
 
-					m_LeftBornPoint = leftpos;
+					//m_LeftBornPoint = leftpos;
+
+					NavalPort* pPort = new NavalPort(BornEdgeType::BornEdgeType_Left);
+					pPort->InitNavalPort(leftpos);
+					BattleMapManager::getInstance()->SetNavalPort(BornEdgeType::BornEdgeType_Left, pPort);
 				}
 				else if (name == "StartPoint_Right")
 				{
 					cocos2d::Vec2 rightpos = cocos2d::Vec2(x, y);
 
-					m_RightBornPoint = rightpos;
+					//m_RightBornPoint = rightpos;
+
+					NavalPort* pPort = new NavalPort(BornEdgeType::BornEdgeType_Right);
+					pPort->InitNavalPort(rightpos);
+					BattleMapManager::getInstance()->SetNavalPort(BornEdgeType::BornEdgeType_Right, pPort);
 				}
 			}
 		}
@@ -156,6 +164,54 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 							{
 
 							}
+
+							if (properties_Map["naval_base"].asString() == "1")//left
+							{
+								if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType::BornEdgeType_Left)
+								{
+									cocos2d::Rect pRect = pTileSprite->getBoundingBox();
+									NavalBase* pBase = new NavalBase();
+									pBase->InitNabalBase(pRect.origin, pRect.size);
+									pBase->SetBelongToType(BornEdgeType::BornEdgeType_Left);
+
+									BattleMapManager::getInstance()->SetNavalBase(pBase);
+								}
+							}
+							else if (properties_Map["naval_base"].asString() == "2")//Right
+							{
+								if (BattleMapManager::getInstance()->GetTeamBornEdge() == BornEdgeType::BornEdgeType_Right)
+								{
+									cocos2d::Rect pRect = pTileSprite->getBoundingBox();
+									NavalBase* pBase = new NavalBase();
+									pBase->InitNabalBase(pRect.origin, pRect.size);
+									pBase->SetBelongToType(BornEdgeType::BornEdgeType_Right);
+
+									BattleMapManager::getInstance()->SetNavalBase(pBase);
+								}
+							}
+
+							if (properties_Map["naval_flag_base"].asString() == "1")//left
+							{
+								cocos2d::Rect pRect = pTileSprite->getBoundingBox();
+								NavalFlagBase* pBase = new NavalFlagBase();
+								cocos2d::Vec2 centerpos = cocos2d::Vec2(pRect.origin.x + tsize.width*0.5f, pRect.origin.y + tsize.height*0.5f);
+								pBase->InitNabalFlagBase(centerpos);
+								pBase->SetBelongToType(BornEdgeType::BornEdgeType_Left);
+
+								BattleMapManager::getInstance()->SetNavalFlagBase(BornEdgeType::BornEdgeType_Left, pBase);
+							}
+							else if(properties_Map["naval_flag_base"].asString() == "2")//Right
+							{
+								cocos2d::Rect pRect = pTileSprite->getBoundingBox();
+								NavalFlagBase* pBase = new NavalFlagBase();
+								cocos2d::Vec2 centerpos = cocos2d::Vec2(pRect.origin.x + tsize.width*0.5f, pRect.origin.y + tsize.height*0.5f);
+								pBase->InitNabalFlagBase(centerpos);
+								pBase->SetBelongToType(BornEdgeType::BornEdgeType_Right);
+
+								BattleMapManager::getInstance()->SetNavalFlagBase(BornEdgeType::BornEdgeType_Right, pBase);
+							}
+
+
 						}
 					}
 				}

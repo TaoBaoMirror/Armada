@@ -224,11 +224,24 @@ void Ship_Carrack::UpdateShip(float delta)
 	//cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x, mPos.y), oldBoundingBox.size);
 	cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x - m_SelfBoundBoxSize.width*0.5f, mPos.y - m_SelfBoundBoxSize.height*0.5f), m_SelfBoundBoxSize);
 	//
+	//if (BattleMapManager::getInstance()->IsCollideMapObstacle(newBoundingBox) == false)
 	/*
 	if (!BattleMapManager::getInstance()->IsCollideIntersect(newBoundingBox))
+>>>>>>> .r20
 	{
 		setPosition(mPos.x, mPos.y);
 	}
+<<<<<<< .mine
+	
+	if (BattleMapManager::getInstance()->IsCollideNavalBase(this))
+	{
+	}
+
+	if (BattleMapManager::getInstance()->IsCollideNavalFlag(this))
+	{
+	}
+	
+	=======
 	*/
 	setPosition(mPos.x, mPos.y);
 	//

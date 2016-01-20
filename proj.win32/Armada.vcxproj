@@ -149,6 +149,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BattleMap\BattleMap.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMapManager.cpp" />
     <ClCompile Include="..\Classes\BattleMap\MapCollision.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\NavalBase.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\NavalFlag.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\NavalFlagBase.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\NavalPort.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\ReadyBornShip.cpp" />
     <ClCompile Include="..\Classes\Bullet\BulletBase.cpp" />
     <ClCompile Include="..\Classes\Bullet\BulletEmitter.cpp" />
     <ClCompile Include="..\Classes\Common\CommonMethod.cpp" />
@@ -174,6 +179,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BattleMap\BattleMap.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMapManager.h" />
     <ClInclude Include="..\Classes\BattleMap\MapCollision.h" />
+    <ClInclude Include="..\Classes\BattleMap\NavalBase.h" />
+    <ClInclude Include="..\Classes\BattleMap\NavalFlag.h" />
+    <ClInclude Include="..\Classes\BattleMap\NavalFlagBase.h" />
+    <ClInclude Include="..\Classes\BattleMap\NavalPort.h" />
+    <ClInclude Include="..\Classes\BattleMap\ReadyBornShip.h" />
     <ClInclude Include="..\Classes\Bullet\BulletBase.h" />
     <ClInclude Include="..\Classes\Bullet\BulletEmitter.h" />
     <ClInclude Include="..\Classes\Common\CommonMethod.h" />
@@ -184,6 +194,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Drive\World.h" />
     <ClInclude Include="..\Classes\GameManager\GameManager.h" />
     <ClInclude Include="..\Classes\GameScene\BattleScene.h" />
+    <ClInclude Include="..\Classes\GameScene\BattleSceneCommon.h" />
     <ClInclude Include="..\Classes\GameScene\TitleScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\ResDef.h" />
