@@ -129,6 +129,12 @@
     <ClCompile Include="..\Classes\BattleMap\ReadyBornShip.cpp">
       <Filter>src\BattleMap</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Common\GameAnimation.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\GameAnimAction.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameScene\BattleSceneCommon.h">
       <Filter>src\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\GameAnimation.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\GameAnimAction.h">
+      <Filter>src\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

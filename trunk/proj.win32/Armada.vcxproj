@@ -157,6 +157,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Bullet\BulletBase.cpp" />
     <ClCompile Include="..\Classes\Bullet\BulletEmitter.cpp" />
     <ClCompile Include="..\Classes\Common\CommonMethod.cpp" />
+    <ClCompile Include="..\Classes\Common\GameAnimAction.cpp" />
+    <ClCompile Include="..\Classes\Common\GameAnimation.cpp" />
     <ClCompile Include="..\Classes\Drive\Block.cpp" />
     <ClCompile Include="..\Classes\Drive\Drive.cpp" />
     <ClCompile Include="..\Classes\Drive\SteeringBehavior.cpp" />
@@ -187,6 +189,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Bullet\BulletBase.h" />
     <ClInclude Include="..\Classes\Bullet\BulletEmitter.h" />
     <ClInclude Include="..\Classes\Common\CommonMethod.h" />
+    <ClInclude Include="..\Classes\Common\GameAnimAction.h" />
+    <ClInclude Include="..\Classes\Common\GameAnimation.h" />
     <ClInclude Include="..\Classes\Drive\Block.h" />
     <ClInclude Include="..\Classes\Drive\Drive.h" />
     <ClInclude Include="..\Classes\Drive\SteeringBehavior.h" />

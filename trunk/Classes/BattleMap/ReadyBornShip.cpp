@@ -47,10 +47,11 @@ bool ReadyBorn::CanBorn()
 void ReadyBorn::Born(cocos2d::Vec2 pos)
 {
 	BattleMap* curmap = BattleMapManager::getInstance()->GetBattleMap();
-	ShipBase* pEnemyShip = ShipManager::getInstance()->BornShip(m_EdgeType, m_ReadyBornSeat);
-	curmap->GetShipLayer()->addChild(pEnemyShip, 10);
+	ShipBase* pShip = ShipManager::getInstance()->BornShip(m_EdgeType, m_ReadyBornSeat);
+	curmap->GetShipLayer()->addChild(pShip, 10);
+	//curmap->addChild(pShip, curmap->GetBuildLayer()->getZOrder());
 
-	pEnemyShip->SetPos(pos);
+	pShip->SetPos(pos);
 
 	m_bCanBorn = false;
 	m_bIsReadyBorn = false;
