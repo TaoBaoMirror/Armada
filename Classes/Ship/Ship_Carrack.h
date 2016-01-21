@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "ShipBase.h"
-
+class BulletEmitter;
 class Ship_Carrack : public ShipBase
 {
 public:
@@ -60,6 +60,14 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 
 	virtual void InitData();
+public:
+	BulletEmitter*	LeftEmitter(){ return mLeftEmitter; }
+	BulletEmitter*	RightEmitter(){ return mRightEmitter; }
+
+protected:
+	BulletEmitter*	mLeftEmitter;
+	BulletEmitter*	mRightEmitter;
+
 };
 
 #endif //

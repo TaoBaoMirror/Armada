@@ -63,6 +63,10 @@ public:
 	float    SideComponent();
 	//
 	bool	 BlockAvoidance();
+	//
+	void SetMaxTorque(float t){ mMaxTorque = t; }
+	void SetMaxBoost(float t){ mMaxBoost = t; }
+
 
 protected:
 	//
@@ -76,6 +80,9 @@ protected:
 	Deceleration	mDeceleration;
 	//
 	int				mFlags;
+	float			mMaxTorque;
+	float			mMaxBoost;
+
 	//
 	bool		AccumulateForce(cocos2d::Vec2 &sf, const cocos2d::Vec2& ForceToAdd);
 	cocos2d::Vec2 Arrive(const cocos2d::Vec2& TargetPos, Deceleration deceleration);

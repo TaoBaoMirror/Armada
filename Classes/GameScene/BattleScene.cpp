@@ -2,6 +2,8 @@
 #include "BattleMap\BattleMap.h"
 #include "BattleMap\BattleMapManager.h"
 #include "Ship\ShipManager.h"
+#include "Bullet\BulletBase.h"
+#include "Drive\World.h"
 
 USING_NS_CC;
 
@@ -85,6 +87,8 @@ void BattleScene::update(float delta)
 		}
 		//update ships
 		ShipManager::getInstance()->Update(delta);
+		//
+		World::GetInstance()->Tick(delta);
 	}
 		break;
 	case BattleStatue::BattleStatue_Settlement:
@@ -267,5 +271,17 @@ void BattleScene::onHoldPress_Right()
 	ShipBase* pShip = ShipManager::getInstance()->GetSelfShip();
 
 	pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_TurnRight, ShipCtrlEvent::KeyDown);
+}
+
+void BattleScene::AddBullet(BulletBase* bullet)
+{
+	cocos2d::Layer* bulletLayer = BattleMapManager::getInstance()->GetBattleMap()->GetBulletLayer();
+
+	if (bulletLayer)
+	{
+		bulletLayer->addChild(bullet);
+	}
+
+
 }
 

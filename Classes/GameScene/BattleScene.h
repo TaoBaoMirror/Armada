@@ -11,6 +11,7 @@ enum BattleStatue
 	BattleStatue_Settlement,
 };
 
+class BulletBase;
 class BattleScene : public cocos2d::Layer
 {
 public:
@@ -30,6 +31,8 @@ public:
 	void onHoldPress_Forward();
 	void onHoldPress_Left();
 	void onHoldPress_Right();
+	//
+	void AddBullet(BulletBase* bullet);
 	
 protected:
 	BattleStatue m_BTS;
