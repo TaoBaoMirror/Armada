@@ -16,12 +16,15 @@
 #include "cocos2d.h"
 #include "Block.h"
 
+class Drive;
+class BulletBase;
 class World
 {
 public:
 	static World* GetInstance();
 	//
 	void Init();
+	void Tick(float);
 	void Free();
 	//
 	void AddBlock(const cocos2d::Rect& rect, bool createWall = false);
@@ -32,6 +35,12 @@ public:
 	void AddWall(const cocos2d::Vec2& A, const cocos2d::Vec2& B);
 	void RemoveWall(const Wall& wall);
 	void RemoveWall(const std::vector<Wall>::iterator& cur_it);
+	//
+	void AddDynamicObject(Drive* obj);
+	void RemoveDynamicObject(Drive* obj);
+	//
+	void AddBullet(BulletBase*	bullet);
+	void RemoveBullet(BulletBase*	bullet);
 
 public:
 
@@ -51,13 +60,20 @@ public:
 	{
 		return mWallsActive[cur_it - mWalls.begin()];
 	}
-
+	//
+	//
+	const std::vector<Drive*>& GetDynamicObjects(){ return mDynamicObjects; }
+	//
+	std::list<BulletBase*>&	GetBullets(){ return mBullets; }
 protected:
 	std::vector<Block>	mBlocks;
 	std::vector<bool>	mBlocksActive;
 	std::vector<Wall>	mWalls;
 	std::vector<bool>	mWallsActive;
-
+	//
+	std::vector<Drive*>	mDynamicObjects;
+	//
+	std::list<BulletBase*>	mBullets;
 private:
 	World();
 	~World();

@@ -1,5 +1,6 @@
 #include "World.h"
-
+#include "Drive.h"
+#include "Bullet/BulletBase.h"
 World::World()
 {
 	Init();
@@ -86,4 +87,51 @@ void World::RemoveWall(const Wall& wall)
 void World::RemoveWall(const std::vector<Wall>::iterator& cur_it)
 {
 	mWallsActive[cur_it - mWalls.begin()] = false;
+}
+
+void World::AddDynamicObject(Drive* obj)
+{
+	mDynamicObjects.push_back(obj);
+
+}
+
+void World::RemoveDynamicObject(Drive* obj)
+{
+	int counter = 0;
+	for each (Drive* d in mDynamicObjects)
+	{
+		if (d == obj)
+		{
+			break;
+		}
+		//
+		counter++;
+	}
+	//
+	if (mDynamicObjects.size()!=0)
+	{
+		mDynamicObjects.erase(mDynamicObjects.begin() + counter);
+	}
+}
+
+void World::AddBullet(BulletBase* bullet)
+{
+	mBullets.push_back(bullet);
+	//
+	cocos2d::Director::getInstance()->getRunningScene()->addChild(bullet, 2);
+}
+
+void World::RemoveBullet(BulletBase* bullet)
+{
+	mBullets.remove(bullet);
+	//
+	bullet->removeFromParentAndCleanup(true);
+}
+
+void World::Tick(float dt)
+{
+	for each (BulletBase* bullet in mBullets)
+	{
+		bullet->Tick(dt);
+	}
 }

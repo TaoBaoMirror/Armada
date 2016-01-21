@@ -15,13 +15,41 @@
 #include "cocos2d.h"
 #include "Drive/Vehicle.h"
 
-class BulletBase : public cocos2d::Sprite
+class BulletEmitter;
+class Block;
+class BulletBase : public cocos2d::Sprite ,public Vehicle
 {
 public:
-	BulletBase();
-	~BulletBase();
+	BulletBase(BulletEmitter* emitter);
+	virtual ~BulletBase();
+	//Inherit from Vehicle
+	virtual void Tick(float) override;
+	virtual void InitData();
+	//New here
+	void Fly();
+
+
 protected:
-	
+
+	float	mAttackDamage;
+	float	mMaxAttackDamage;
+
+	bool	mCollidedDestory;
+	float	mSafeAliveTime;
+	bool	mAlive;
+	int		mCollideCounter;
+
+	BulletEmitter*	mBirthEmitter;
+
+	void	CollisionWorld();
+	virtual void OnCollision(Drive* DynamicObjectCollider);
+	virtual void OnCollision(Block* StaticObjectCollider);
+	void	DestoryBullet();
 private:
+
+public:
+	static bool IsCollision(BulletBase* bullet, Drive* DynamicObject);
+	static bool IsCollision(BulletBase* bullet, Block* StaticObject);
+
 };
 #endif // BulletBase_h__

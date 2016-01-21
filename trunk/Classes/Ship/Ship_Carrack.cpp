@@ -2,7 +2,7 @@
 #include "Drive/Vehicle.h"
 #include "Drive/SteeringBehavior.h"
 #include "BattleMap/BattleMapManager.h"
-
+#include "Bullet/BulletEmitter.h"
 
 Ship_Carrack::Ship_Carrack()
 {
@@ -35,11 +35,19 @@ Ship_Carrack::Ship_Carrack()
 	{
 		m_ActionsFrameCount.push_back(cocos2d::Value(frameanim[i]));
 	}
+
+	//
+	mLeftEmitter = new BulletEmitter(this);
+	mRightEmitter = new BulletEmitter(this);
+
 }
 
 
 Ship_Carrack::~Ship_Carrack()
 {
+	if (mLeftEmitter) delete mLeftEmitter;
+	if (mRightEmitter) delete mRightEmitter;
+
 }
 //-----------------------------------------------------
 void Ship_Carrack::InitShip()
@@ -208,6 +216,16 @@ void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t, ShipCtrlEvent evt)
 		if (evt == KeyReleased) Steering()->TurnRightOff();
 	}
 
+	if (t == ShipCtrlType_FireLeft)
+	{
+		if (evt == KeyPressed) mLeftEmitter->Shot(BulletEmitter::face_left);
+	}
+
+	if (t == ShipCtrlType_FireRight)
+	{
+		if (evt == KeyPressed) mLeftEmitter->Shot(BulletEmitter::face_right);
+	}
+
 }
 
 void Ship_Carrack::InitData()
@@ -219,6 +237,9 @@ void Ship_Carrack::UpdateShip(float delta)
 {
 
 	Tick(delta);
+
+	LeftEmitter()->TickEmitter(delta);
+	RightEmitter()->TickEmitter(delta);
 
 	cocos2d::Rect oldBoundingBox = this->getBoundingBox();
 	//cocos2d::Rect newBoundingBox = cocos2d::Rect(cocos2d::Vec2(mPos.x, mPos.y), oldBoundingBox.size);

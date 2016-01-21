@@ -4,14 +4,14 @@
 #include "Block.h"
 #include "World.h"
 
-SteeringBehavior::SteeringBehavior(Vehicle* agent) :mVehicle(agent)
+SteeringBehavior::SteeringBehavior(Vehicle* agent) :mVehicle(agent), mMaxTorque(6.28f), mMaxBoost(80)
 {
 	mDeceleration = normal;
 	mSteeringForce = cocos2d::Vec2::ZERO;
 	mTarget = cocos2d::Vec2::ZERO;
 	mFlags = none;
 	//
-	BlockAvoidanceOn();
+	//BlockAvoidanceOn();
 }
 
 SteeringBehavior::~SteeringBehavior()
@@ -139,25 +139,22 @@ void SteeringBehavior::SetTarget(const cocos2d::Vec2& t)
 
 cocos2d::Vec2 SteeringBehavior::Boost()
 {
-	const float MaxBoost = 80;
 
-	return mVehicle->Heading() * MaxBoost;
+	return mVehicle->Heading() * mMaxBoost;
 	
 }
 
 float SteeringBehavior::TurnLeft()
 {
-	const float MaxTorque = 3.14f * 2;
 
-	return MaxTorque * counter_clockwise;
+	return mMaxTorque * counter_clockwise;
 
 }
 
 float SteeringBehavior::TurnRight()
 {
-	const float MaxTorque = 3.14f * 2;
 
-	return MaxTorque * clockwise;
+	return mMaxTorque * clockwise;
 }
 
 cocos2d::Vec2 SteeringBehavior::BreakDown()

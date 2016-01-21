@@ -23,7 +23,7 @@ public:
 	Vehicle(World* world);
 	~Vehicle();
 	//
-	void Tick(float);
+	virtual void Tick(float);
 	//
 	virtual void InitData();
 
