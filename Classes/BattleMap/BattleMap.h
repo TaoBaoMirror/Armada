@@ -23,9 +23,10 @@ public:
 	cocos2d::Vec2 GetLeftBornPoint();
 	cocos2d::Vec2 GetRightBornPoint();
 
-	void update(float delta) override;
+	virtual void update(float delta) override;
 
-	void onEnter() override;
+	virtual void onEnter() override;
+	virtual void onExit() override;
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode code, cocos2d::Event* event);
 

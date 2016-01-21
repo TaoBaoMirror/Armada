@@ -33,13 +33,19 @@ BattleMap::~BattleMap()
 
 void BattleMap::update(float delta)
 {
-
+	cocos2d::TMXTiledMap::update(delta);
 }
 
 void BattleMap::onEnter()
 {
-
+	cocos2d::TMXTiledMap::onEnter();
 }
+
+void BattleMap::onExit()
+{
+	cocos2d::TMXTiledMap::onExit();
+}
+
 
 void BattleMap::onKeyPressed(cocos2d::EventKeyboard::KeyCode code, cocos2d::Event* event)
 {

@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Drive/Vehicle.h"
 #include "GameScene/BattleSceneCommon.h"
+#include "Common/GameAnimation.h"
 
 
 enum ShipCtrlType
@@ -24,7 +25,7 @@ enum ShipCtrlEvent
 	KeyReleased
 };
 
-class ShipBase : public cocos2d::Sprite , public Vehicle
+class ShipBase : public GameAnimation , public Vehicle
 {
 protected:
 	enum  ShipAnimType

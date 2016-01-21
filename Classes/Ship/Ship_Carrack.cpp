@@ -7,7 +7,7 @@
 Ship_Carrack::Ship_Carrack()
 {
 	//name
-	m_ShipName = "Ship_Carrack";
+	m_ShipName = "Ship_Carrack_";
 	//name
 	std::string imgname[6] = { "Stop", "Move", "Attackleft", "Attackright", "Hurt", "Die" };
 	//ActionsName = test; 
@@ -17,7 +17,7 @@ Ship_Carrack::Ship_Carrack()
 	}
 
 	//count
-	int stopFrame = 1;
+	int stopFrame = 4;
 
 	int moveFrame = 1;
 
@@ -35,6 +35,15 @@ Ship_Carrack::Ship_Carrack()
 	{
 		m_ActionsFrameCount.push_back(cocos2d::Value(frameanim[i]));
 	}
+
+	AddAnim(m_ShipName + imgname[0], frameanim[0], 0, callfunc_selector(Ship_Carrack::ShipStopStart), callfunc_selector(Ship_Carrack::ShipStopEnd));
+	AddAnim(m_ShipName + imgname[1], frameanim[1], 0, callfunc_selector(Ship_Carrack::ShipMoveStart), callfunc_selector(Ship_Carrack::ShipMoveEnd));
+	AddAnim(m_ShipName + imgname[2], frameanim[2], 0, callfunc_selector(Ship_Carrack::ShipAttackLeftStart), callfunc_selector(Ship_Carrack::ShipAttackLeftEnd));
+	AddAnim(m_ShipName + imgname[3], frameanim[3], 0, callfunc_selector(Ship_Carrack::ShipAttackRightStart), callfunc_selector(Ship_Carrack::ShipAttackRightEnd));
+	AddAnim(m_ShipName + imgname[4], frameanim[4], 0, callfunc_selector(Ship_Carrack::ShipHurtStart), callfunc_selector(Ship_Carrack::ShipHurtEnd));
+	AddAnim(m_ShipName + imgname[5], frameanim[5], 0, callfunc_selector(Ship_Carrack::ShipDieStart), callfunc_selector(Ship_Carrack::ShipDieEnd));
+
+	InitSprite(m_ShipName + imgname[0]);
 
 	//
 	mLeftEmitter = new BulletEmitter(this);
@@ -54,7 +63,7 @@ void Ship_Carrack::InitShip()
 {
 	ShipBase::InitShip();
 
-	SetResource(m_ShipName);
+	//SetResource(m_ShipName);
 	//
 	InitData();
 
@@ -195,12 +204,16 @@ void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t, ShipCtrlEvent evt)
 	{
 		if (evt == KeyPressed) Steering()->BoostOn();
 		if (evt == KeyReleased) Steering()->BoostOff();
+
+		PlayAnim(m_ShipName+"Move");
 	}
 
 	if (t == ShipCtrlType_Break)
 	{
 		if (evt == KeyPressed) Steering()->BreakDownOn();
 		if (evt == KeyReleased) Steering()->BreakDownOff();
+
+		PlayAnim(m_ShipName + "Stop");
 	}
 
 	if (t ==  ShipCtrlType_TurnLeft)
@@ -235,6 +248,7 @@ void Ship_Carrack::InitData()
 
 void Ship_Carrack::UpdateShip(float delta)
 {
+	ShipBase::UpdateShip(delta);
 
 	Tick(delta);
 
