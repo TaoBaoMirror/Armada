@@ -123,15 +123,29 @@ void World::AddBullet(BulletBase* bullet)
 
 void World::RemoveBullet(BulletBase* bullet)
 {
-	mBullets.remove(bullet);
+	//mBullets.remove(bullet);
 	//
 	bullet->removeFromParentAndCleanup(true);
 }
 
 void World::Tick(float dt)
 {
-	for each (BulletBase* bullet in mBullets)
+	std::list<BulletBase*>::iterator it = mBullets.begin();
+
+	while (it != mBullets.end())
 	{
+		BulletBase* bullet = *it;
 		bullet->Tick(dt);
+		//
+		if (bullet->NeedToDestory())
+		{
+			it = mBullets.erase(it);
+			RemoveBullet(bullet);
+			delete bullet;
+		}
+		else
+		{
+			it++;
+		}
 	}
 }

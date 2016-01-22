@@ -236,7 +236,7 @@ void Ship_Carrack::ShipBattleCtrl(ShipCtrlType t, ShipCtrlEvent evt)
 
 	if (t == ShipCtrlType_FireRight)
 	{
-		if (evt == KeyPressed) mLeftEmitter->Shot(BulletEmitter::face_right);
+		if (evt == KeyPressed) mRightEmitter->Shot(BulletEmitter::face_right);
 	}
 
 }

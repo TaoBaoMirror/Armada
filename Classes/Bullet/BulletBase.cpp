@@ -5,7 +5,8 @@
 #include "BulletEmitter.h"
 
 BulletBase::BulletBase(BulletEmitter* emitter) :
-	Vehicle(World::GetInstance()),mBirthEmitter(emitter)
+	Vehicle(World::GetInstance()),mBirthEmitter(emitter),
+	mNeedToDestory(false)
 {
 
 }
@@ -67,7 +68,7 @@ void BulletBase::InitData()
 	mAttackDamage = 10;
 	mMaxAttackDamage = 10;
 	mCollidedDestory = false;
-	mSafeAliveTime = 25;
+	mSafeAliveTime = 2.2f;
 	mAlive = false;
 	mCollideCounter = 0;
 	//
@@ -91,6 +92,21 @@ void BulletBase::CollisionWorld()
 			mCollideCounter++;
 		}
 	}
+	/*
+	const std::vector<Block>& Blocks = GetWorld()->GetBlocks();
+	std::vector<Block>::iterator block_it = Blocks.begin();
+	for (; block_it != Blocks.end(); ++block_it)
+	{
+		if (!mAlive) break;
+
+		if (BulletBase::IsCollision(this, *block_it))
+		{
+			OnCollision(*block_it);
+			//
+			mCollideCounter++;
+		}
+	}
+	*/
 }
 
 void BulletBase::OnCollision(Drive* DynamicObjectCollider)
@@ -119,18 +135,16 @@ bool BulletBase::IsCollision(BulletBase* bullet, Drive* DynamicObject)
 
 }
 
-bool BulletBase::IsCollision(BulletBase* bullet, Block* StaticObject)
+bool BulletBase::IsCollision(BulletBase* bullet, const Block& StaticObject)
 {
-	return StaticObject->IsCollision(bullet->Radius(), bullet->Pos());
+	return StaticObject.IsCollision(bullet->Radius(), bullet->Pos());
 }
 
 void BulletBase::DestoryBullet()
 {
 	mAlive = false;
 
-	World::GetInstance()->RemoveBullet(this);
-
-	delete this;
+	mNeedToDestory = true;
 }
 
 void BulletBase::Fly()

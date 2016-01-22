@@ -6,7 +6,7 @@
 BulletEmitter::BulletEmitter(ShipBase* ship):
 mBulletStyle(normal_Bullet), mShip(ship)
 {
-	mMaxColdDown = 3;
+	mMaxColdDown = 1;
 	mColdDownTimer = mMaxColdDown;
 }
 

@@ -27,7 +27,7 @@ public:
 	virtual void InitData();
 	//New here
 	void Fly();
-
+	bool NeedToDestory(){ return mNeedToDestory; }
 
 protected:
 
@@ -37,6 +37,7 @@ protected:
 	bool	mCollidedDestory;
 	float	mSafeAliveTime;
 	bool	mAlive;
+	bool	mNeedToDestory;
 	int		mCollideCounter;
 
 	BulletEmitter*	mBirthEmitter;
@@ -49,7 +50,7 @@ private:
 
 public:
 	static bool IsCollision(BulletBase* bullet, Drive* DynamicObject);
-	static bool IsCollision(BulletBase* bullet, Block* StaticObject);
+	static bool IsCollision(BulletBase* bullet, const Block& StaticObject);
 
 };
 #endif // BulletBase_h__
