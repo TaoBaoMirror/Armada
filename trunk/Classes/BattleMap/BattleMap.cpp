@@ -1,6 +1,7 @@
 #include "BattleMap.h"
 #include "BattleMapManager.h"
 #include "MapCollision.h"
+#include "Emplacement.h"
 
 //Sprites Layer
 #define EffectLayer "EffectLayer"			//显示的特效层
@@ -217,6 +218,23 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 								BattleMapManager::getInstance()->SetNavalFlagBase(BornEdgeType::BornEdgeType_Right, pBase);
 							}
 
+							if (properties_Map["emplacement_base"].asString() == "1")
+							{
+								if (properties_Map["edge_type"].asString() == "1")
+								{
+									Emplacement* pEmp = new Emplacement(BornEdgeType::BornEdgeType_Left);
+									pEmp->setPosition(pTileSprite->getPosition());
+
+									BattleMapManager::getInstance()->SetEmplacement(BornEdgeType::BornEdgeType_Left, pEmp);
+								}
+								else if (properties_Map["edge_type"].asString() == "2")
+								{
+									Emplacement* pEmp = new Emplacement(BornEdgeType::BornEdgeType_Right);
+									pEmp->setPosition(pTileSprite->getPosition());
+
+									BattleMapManager::getInstance()->SetEmplacement(BornEdgeType::BornEdgeType_Right, pEmp);
+								}
+							}
 
 						}
 					}

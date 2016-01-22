@@ -260,3 +260,46 @@ ShipBase* ShipManager::GetSelfShip()
 	return nullptr;
 	
 }
+
+ShipBase* ShipManager::FindShipByDistance(BornEdgeType borntype, cocos2d::Vec2 oriPos, float dis)
+{
+	switch (borntype)
+	{
+	case BornEdgeType_Left:
+	{
+							  std::map<TeamShipSeat, ShipBase*>::iterator itTeam = m_Team_Left_Ships.begin();
+							  for (; itTeam != m_Team_Left_Ships.end(); ++itTeam)
+							  {
+								  ShipBase* pShip = itTeam->second;
+								  if (pShip != nullptr)
+								  {
+									  cocos2d::Vec2 shippos = pShip->getPosition();
+									  if (shippos.distance(oriPos) < dis)
+									  {
+										  return pShip;
+									  }
+								  }
+							  }
+	}
+		break;
+	case BornEdgeType_Right:
+	{
+							   std::map<TeamShipSeat, ShipBase*>::iterator itTeam = m_Team_Right_Ships.begin();
+							   for (; itTeam != m_Team_Right_Ships.end(); ++itTeam)
+							   {
+								   ShipBase* pShip = itTeam->second;
+								   if (pShip != nullptr)
+								   {
+									   cocos2d::Vec2 shippos = pShip->getPosition();
+									   if (shippos.distance(oriPos) < dis)
+									   {
+										   return pShip;
+									   }
+								   }
+							   }
+	}
+		break;
+	default:
+		break;
+	}
+}

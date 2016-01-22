@@ -46,6 +46,8 @@ public:
 
 	ShipBase* BornShip(BornEdgeType borntype, TeamShipSeat num, ShipType type = ShipType::ShipType_Carrack);
 
+	ShipBase* FindShipByDistance(BornEdgeType borntype, cocos2d::Vec2 oriPos, float dis);
+
 	void ClearAll();
 
 	//ShipBase* GetTeamShip(TeamShipSeat num);

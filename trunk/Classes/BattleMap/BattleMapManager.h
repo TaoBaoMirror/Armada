@@ -6,6 +6,7 @@
 #include "NavalBase.h"
 #include "NavalFlagBase.h"
 #include "NavalPort.h"
+#include "Emplacement.h"
 
 class BattleMap;
 
@@ -43,6 +44,9 @@ public:
 
 	void SetNavalPort(BornEdgeType type, NavalPort* pPort);
 	NavalPort* GetNavalPort(BornEdgeType type);
+
+	void SetEmplacement(BornEdgeType type, Emplacement* pEmp);
+	Emplacement* GetEmplacement(BornEdgeType type);
 protected:
 	BattleMapManager();
 	
@@ -59,6 +63,8 @@ protected:
 	std::map<BornEdgeType,NavalFlagBase*> m_NavalFlagBases;
 
 	std::map<BornEdgeType, NavalPort*> m_NavalPorts;
+
+	std::map<BornEdgeType, Emplacement*> m_Emplacements;
 };
 
 #endif//__BATTLEMAP_MANAGER_H__

@@ -52,6 +52,18 @@
     <property name="collision_type" value="1"/>
    </properties>
   </tile>
+  <tile id="1146">
+   <properties>
+    <property name="edge_type" value="1"/>
+    <property name="emplacement_base" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1149">
+   <properties>
+    <property name="edge_type" value="2"/>
+    <property name="emplacement_base" value="1"/>
+   </properties>
+  </tile>
   <tile id="1161">
    <properties>
     <property name="collision_type" value="1"/>
@@ -70,7 +82,7 @@
  </layer>
  <layer name="LandLayer" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1DEOACAIQ1ETPKJ34fpOTji5SJv/EvY2BDIGAAAQl1Gnu1tmpx7qHHus+TfLi5PZcR/KVO/e+e8CAAB0sQFjsxj/
+   eJzt1EEKACAIRNHAjthdXASdvVUQ1M4Ilf/AbcyAqVIAAEBwKud4d8ucqUd01h69vssyDG/tPdrDTL+szOyVL1H/fea7CwAA4MUEVuIaAA==
   </data>
  </layer>
  <layer name="BuildLayer" width="50" height="30">
