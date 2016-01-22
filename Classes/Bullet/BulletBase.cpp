@@ -83,7 +83,7 @@ void BulletBase::CollisionWorld()
 	{
 		if (!mAlive) break;
 
-		if (*it == mBirthEmitter->GetShip()) continue;
+		if (*it == mBirthEmitter->GetVehicle()) continue;
 
 		if (BulletBase::IsCollision(this, *it))
 		{

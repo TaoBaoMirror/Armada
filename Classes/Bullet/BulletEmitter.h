@@ -20,7 +20,7 @@ class BulletEmitter
 public:
 	enum ShotType
 	{
-		face_left,face_right
+		face_left,face_right,custom_dir
 	};
 
 	enum BulletStyle
@@ -28,7 +28,7 @@ public:
 		normal_Bullet
 	};
 public:
-	BulletEmitter(ShipBase* ship);
+	BulletEmitter(Vehicle* ship);
 	~BulletEmitter();
 	//
 	void		TickEmitter(float);
@@ -41,13 +41,18 @@ public:
 	void		SetBulletStyle(BulletStyle bs){ mBulletStyle = bs; }
 	BulletStyle	GetBulletStyle(){ return mBulletStyle; }
 
-	ShipBase*	GetShip(){ return mShip; }
-protected:
-	ShipBase*	mShip;
+	Vehicle*	GetVehicle(){ return mShip; }
 	//
-	float	mColdDownTimer;
-	float	mMaxColdDown;
-	BulletStyle	mBulletStyle;
+	void		SetShootDir(const cocos2d::Vec2& dir){ mDefaultDir = dir; }
+protected:
+	Vehicle*	mShip;
+	//
+	float			mColdDownTimer;
+	float			mMaxColdDown;
+	BulletStyle		mBulletStyle;
+	//
+	cocos2d::Vec2	mDefaultDir;
+
 private:
 };
 
