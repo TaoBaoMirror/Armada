@@ -19,8 +19,8 @@ public:
 
 	void StopAction();
 
-	void SetActionStartFunc(cocos2d::SEL_CallFunc func);
-	void SetActionEndFunc(cocos2d::SEL_CallFunc func);
+	void SetActionStartFunc(cocos2d::SEL_CallFunc func, cocos2d::Ref* target);
+	void SetActionEndFunc(cocos2d::SEL_CallFunc func, cocos2d::Ref* target);
 	void SetActionUpdateFunc(cocos2d::SEL_CallFunc func);
 
 protected:
@@ -35,6 +35,8 @@ protected:
 
 	int m_ActionTag;
 
+	cocos2d::Ref* m_StartFuncTarget;
+	cocos2d::Ref* m_StopFuncTarget;
 	cocos2d::SEL_CallFunc ActionStartFunc;
 	cocos2d::SEL_CallFunc ActionEndFunc;
 	cocos2d::SEL_CallFunc ActionUpdateFunc;

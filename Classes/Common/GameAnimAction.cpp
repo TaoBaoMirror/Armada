@@ -53,9 +53,9 @@ void GameAnimAction::PlayAction(float delay)
 	pRepeat->setTag(m_ActionTag);
 	m_Animation->runAction(pRepeat);
 
-	if (ActionStartFunc != nullptr)
+	if (m_StartFuncTarget)
 	{
-		ActionStartFunc;
+		(m_StartFuncTarget->*ActionStartFunc)();
 	}
 }
 
@@ -99,19 +99,21 @@ void GameAnimAction::StopAction()
 
 	m_Animation->stopActionByTag(m_ActionTag);
 
-	if (ActionEndFunc != nullptr)
+	if (m_StopFuncTarget)
 	{
-		ActionEndFunc;
+		(m_StopFuncTarget->*ActionEndFunc)();
 	}
 }
 
-void GameAnimAction::SetActionStartFunc(cocos2d::SEL_CallFunc func)
+void GameAnimAction::SetActionStartFunc(cocos2d::SEL_CallFunc func, cocos2d::Ref* target)
 {
+	m_StartFuncTarget = target;
 	ActionStartFunc = func;
 }
 
-void GameAnimAction::SetActionEndFunc(cocos2d::SEL_CallFunc func)
+void GameAnimAction::SetActionEndFunc(cocos2d::SEL_CallFunc func, cocos2d::Ref* target)
 {
+	m_StopFuncTarget = target;
 	ActionEndFunc = func;
 }
 
@@ -122,8 +124,8 @@ void GameAnimAction::SetActionUpdateFunc(cocos2d::SEL_CallFunc func)
 
 void GameAnimAction::onOnceAnimOver()
 {
-	if (ActionEndFunc != nullptr)
+	if (m_StopFuncTarget)
 	{
-		ActionEndFunc;
+		(m_StopFuncTarget->*ActionEndFunc)();
 	}
 }
