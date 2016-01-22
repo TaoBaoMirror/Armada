@@ -3,11 +3,12 @@
 #include "BulletBase.h"
 #include "Drive/World.h"
 
-BulletEmitter::BulletEmitter(ShipBase* ship):
+BulletEmitter::BulletEmitter(Vehicle* ship) :
 mBulletStyle(normal_Bullet), mShip(ship)
 {
 	mMaxColdDown = 1;
 	mColdDownTimer = mMaxColdDown;
+	mDefaultDir = cocos2d::Vec2::ZERO;
 }
 
 BulletEmitter::~BulletEmitter()
@@ -43,26 +44,29 @@ void BulletEmitter::Shot(ShotType t)
 
 	if (t == face_left)
 	{
-		const cocos2d::Vec2& dir = GetShip()->Side() * -1;
+		const cocos2d::Vec2& dir = GetVehicle()->Side() * -1;
 
-		bullet->SetPos(GetShip()->Pos());
+		bullet->SetPos(GetVehicle()->Pos());
 		bullet->SetVelocity(dir * bullet->MaxSpeed());
 		
 	}
 	else if (t == face_right)
 	{
-		const cocos2d::Vec2& dir = GetShip()->Side();
+		const cocos2d::Vec2& dir = GetVehicle()->Side();
 
-		bullet->SetPos(GetShip()->Pos());
+		bullet->SetPos(GetVehicle()->Pos());
 		bullet->SetVelocity(dir * bullet->MaxSpeed());
-
+	}
+	else if (t == custom_dir)
+	{	
+		bullet->SetPos(GetVehicle()->Pos());
+		bullet->SetVelocity(mDefaultDir * bullet->MaxSpeed());
 	}
 
 	if (bullet)
 	{
 		bullet->Fly();
 		mColdDownTimer = mMaxColdDown;
-
 	}
 	//
 

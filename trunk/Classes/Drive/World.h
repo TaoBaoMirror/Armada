@@ -62,7 +62,7 @@ public:
 	}
 	//
 	//
-	const std::vector<Drive*>& GetDynamicObjects(){ return mDynamicObjects; }
+	std::vector<Drive*>& GetDynamicObjects(){ return mDynamicObjects; }
 	//
 	std::list<BulletBase*>&	GetBullets(){ return mBullets; }
 protected:
