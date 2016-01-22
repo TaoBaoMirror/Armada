@@ -36,7 +36,7 @@ Ship_Carrack::Ship_Carrack()
 		m_ActionsFrameCount.push_back(cocos2d::Value(frameanim[i]));
 	}
 
-	AddAnim(m_ShipName + imgname[0], frameanim[0], 0, callfunc_selector(Ship_Carrack::ShipStopStart), callfunc_selector(Ship_Carrack::ShipStopEnd));
+	AddAnim(m_ShipName + imgname[0], frameanim[0], 0, nullptr, callfunc_selector(Ship_Carrack::ShipStopEnd));
 	AddAnim(m_ShipName + imgname[1], frameanim[1], 0, callfunc_selector(Ship_Carrack::ShipMoveStart), callfunc_selector(Ship_Carrack::ShipMoveEnd));
 	AddAnim(m_ShipName + imgname[2], frameanim[2], 0, callfunc_selector(Ship_Carrack::ShipAttackLeftStart), callfunc_selector(Ship_Carrack::ShipAttackLeftEnd));
 	AddAnim(m_ShipName + imgname[3], frameanim[3], 0, callfunc_selector(Ship_Carrack::ShipAttackRightStart), callfunc_selector(Ship_Carrack::ShipAttackRightEnd));

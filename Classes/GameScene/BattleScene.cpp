@@ -85,6 +85,17 @@ void BattleScene::update(float delta)
 		{
 			onHoldPress_Right();
 		}
+		//update emp
+		Emplacement* pEmpLeft = BattleMapManager::getInstance()->GetEmplacement(BornEdgeType::BornEdgeType_Left);
+		Emplacement* pEmpRight = BattleMapManager::getInstance()->GetEmplacement(BornEdgeType::BornEdgeType_Right);
+		if (pEmpLeft != nullptr)
+		{
+			pEmpLeft->update(delta);
+		}
+		if (pEmpRight != nullptr)
+		{
+			pEmpRight->update(delta);
+		}
 		//update ships
 		ShipManager::getInstance()->Update(delta);
 		//

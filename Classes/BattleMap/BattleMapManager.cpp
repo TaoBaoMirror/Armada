@@ -172,7 +172,20 @@ NavalPort* BattleMapManager::GetNavalPort(BornEdgeType type)
 	return nullptr;
 }
 
+void BattleMapManager::SetEmplacement(BornEdgeType type, Emplacement* pEmp)
+{
+	m_Emplacements[type] = pEmp;
+}
 
+Emplacement* BattleMapManager::GetEmplacement(BornEdgeType type)
+{
+	std::map<BornEdgeType, Emplacement*>::iterator it = m_Emplacements.find(type);
+	if (it != m_Emplacements.end())
+	{
+		return it->second;
+	}
 
+	return nullptr;
+}
 
 

@@ -53,9 +53,9 @@ void GameAnimAction::PlayAction(float delay)
 	pRepeat->setTag(m_ActionTag);
 	m_Animation->runAction(pRepeat);
 
-	if (m_StartFuncTarget)
+	if (m_StartFuncTarget && ActionStartFunc != nullptr)
 	{
-		(m_StartFuncTarget->*ActionStartFunc)();
+		(m_StartFuncTarget->*ActionStartFunc)();	
 	}
 }
 
@@ -99,7 +99,7 @@ void GameAnimAction::StopAction()
 
 	m_Animation->stopActionByTag(m_ActionTag);
 
-	if (m_StopFuncTarget)
+	if (m_StopFuncTarget && m_StopFuncTarget != nullptr)
 	{
 		(m_StopFuncTarget->*ActionEndFunc)();
 	}
@@ -124,7 +124,7 @@ void GameAnimAction::SetActionUpdateFunc(cocos2d::SEL_CallFunc func)
 
 void GameAnimAction::onOnceAnimOver()
 {
-	if (m_StopFuncTarget)
+	if (m_StopFuncTarget && m_StopFuncTarget != nullptr)
 	{
 		(m_StopFuncTarget->*ActionEndFunc)();
 	}

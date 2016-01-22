@@ -4,26 +4,42 @@
 #include "cocos2d.h"
 #include "Common\GameAnimation.h"
 #include "Ship\ShipBase.h"
+#include "Bullet\BulletEmitter.h"
 
 class Emplacement : public GameAnimation
 {
 public:
-	Emplacement();
+	Emplacement(BornEdgeType edgetype);
 	~Emplacement();
 
 	virtual void update(float dt) override;
 
 protected:
-	ShipBase* FindAndAimEnemyShip();
+	void FindTargetShip();
 
-	void AttackEnemyShip();
+	bool IsWithinRange();
+
+	bool IsWithinDegree();
+
+	void AttackTargetShip();
+
+	void RotToTargetShip(float dt);
 
 	bool IsAttackCoolDownOver();
 
-	bool m_bIsCoolDownOver;
+	float m_Range;
 
-	float m_CoolDownTime;
-	float m_CurCoolDownTime;
+	float m_CurDegree;
+
+	float m_DegreeThreshold;
+
+	float m_DegreeSpeed;
+
+	BornEdgeType m_EdgeType;
+
+	ShipBase* m_LockTarget;
+
+	BulletEmitter*	mGunEmitter;
 };
 
 #endif //__EMPLACEMENT_H__
