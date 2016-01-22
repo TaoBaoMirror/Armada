@@ -44,6 +44,9 @@ public:
 	Vehicle*	GetVehicle(){ return mShip; }
 	//
 	void		SetShootDir(const cocos2d::Vec2& dir){ mDefaultDir = dir; }
+	void		SetEmitterPos(const cocos2d::Vec2& pos){ mDefaultPos = pos; }
+
+
 protected:
 	Vehicle*	mShip;
 	//
@@ -52,6 +55,8 @@ protected:
 	BulletStyle		mBulletStyle;
 	//
 	cocos2d::Vec2	mDefaultDir;
+	cocos2d::Vec2	mDefaultPos;
+
 
 private:
 };

@@ -9,6 +9,7 @@ mBulletStyle(normal_Bullet), mShip(ship)
 	mMaxColdDown = 1;
 	mColdDownTimer = mMaxColdDown;
 	mDefaultDir = cocos2d::Vec2::ZERO;
+	mDefaultPos = cocos2d::Vec2::ZERO;
 }
 
 BulletEmitter::~BulletEmitter()
@@ -59,7 +60,7 @@ void BulletEmitter::Shot(ShotType t)
 	}
 	else if (t == custom_dir)
 	{	
-		bullet->SetPos(GetVehicle()->Pos());
+		bullet->SetPos(mDefaultPos);
 		bullet->SetVelocity(mDefaultDir * bullet->MaxSpeed());
 	}
 
