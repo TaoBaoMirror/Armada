@@ -22,8 +22,8 @@ void GameAnimation::AddAnim(std::string actionName, int framenum, int animTag, c
 		GameAnimAction* pAction = new GameAnimAction(this, animTag);
 		m_ActionDict[actionName] = pAction;
 
-		pAction->SetActionStartFunc(ActionStartFunc);
-		pAction->SetActionEndFunc(ActionEndFunc);
+		pAction->SetActionStartFunc(ActionStartFunc, this);
+		pAction->SetActionEndFunc(ActionEndFunc, this);
 
 		pAction->InitResource(actionName,framenum);
 	}

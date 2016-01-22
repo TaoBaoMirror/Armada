@@ -148,6 +148,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BaseUI\ProgressBar.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMap.cpp" />
     <ClCompile Include="..\Classes\BattleMap\BattleMapManager.cpp" />
+    <ClCompile Include="..\Classes\BattleMap\Emplacement.cpp" />
     <ClCompile Include="..\Classes\BattleMap\MapCollision.cpp" />
     <ClCompile Include="..\Classes\BattleMap\NavalBase.cpp" />
     <ClCompile Include="..\Classes\BattleMap\NavalFlag.cpp" />
@@ -180,6 +181,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BaseUI\ProgressBar.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMap.h" />
     <ClInclude Include="..\Classes\BattleMap\BattleMapManager.h" />
+    <ClInclude Include="..\Classes\BattleMap\Emplacement.h" />
     <ClInclude Include="..\Classes\BattleMap\MapCollision.h" />
     <ClInclude Include="..\Classes\BattleMap\NavalBase.h" />
     <ClInclude Include="..\Classes\BattleMap\NavalFlag.h" />

@@ -135,6 +135,7 @@
     <ClCompile Include="..\Classes\Common\GameAnimAction.cpp">
       <Filter>src\Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BattleMap\Emplacement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -230,6 +231,7 @@
     <ClInclude Include="..\Classes\Common\GameAnimAction.h">
       <Filter>src\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\BattleMap\Emplacement.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
