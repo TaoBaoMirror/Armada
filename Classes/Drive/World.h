@@ -44,8 +44,8 @@ public:
 
 public:
 
-	const std::vector<Block>& GetBlocks(){ return mBlocks; }
-	const std::vector<bool>& GetBlocksActive(){ return mBlocksActive; }
+	std::vector<Block>& GetBlocks(){ return mBlocks; }
+	std::vector<bool>& GetBlocksActive(){ return mBlocksActive; }
 
 	bool GetBlocksActive(const std::vector<Block>::iterator& cur_it)
 	{
@@ -53,8 +53,8 @@ public:
 	}
 
 
-	const std::vector<Wall>& GetWalls(){ return mWalls; }
-	const std::vector<bool>& GetWallsActive(){ return mWallsActive; }
+	std::vector<Wall>& GetWalls(){ return mWalls; }
+	std::vector<bool>& GetWallsActive(){ return mWallsActive; }
 
 	bool GetBlocksActive(const std::vector<Wall>::iterator& cur_it)
 	{
