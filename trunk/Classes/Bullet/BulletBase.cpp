@@ -92,8 +92,8 @@ void BulletBase::CollisionWorld()
 			mCollideCounter++;
 		}
 	}
-	/*
-	const std::vector<Block>& Blocks = GetWorld()->GetBlocks();
+	
+	std::vector<Block>& Blocks = GetWorld()->GetBlocks();
 	std::vector<Block>::iterator block_it = Blocks.begin();
 	for (; block_it != Blocks.end(); ++block_it)
 	{
@@ -101,22 +101,24 @@ void BulletBase::CollisionWorld()
 
 		if (BulletBase::IsCollision(this, *block_it))
 		{
-			OnCollision(*block_it);
+			OnCollision(&*block_it);
 			//
 			mCollideCounter++;
 		}
 	}
-	*/
+	
 }
 
 void BulletBase::OnCollision(Drive* DynamicObjectCollider)
 {
-	CCLOG("Bullet Hit");
+	CCLOG("Bullet DynamicObject");
 }
 
 void BulletBase::OnCollision(Block* StaticObjectCollider)
 {
-	CCLOG("Bullet Hit");
+	CCLOG("Bullet Block");
+	//
+	DestoryBullet();
 
 }
 //////////////////////////////////////////////////////////////////////////
