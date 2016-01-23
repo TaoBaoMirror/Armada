@@ -231,6 +231,7 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 								{
 									Emplacement* pEmp = new Emplacement(BornEdgeType::BornEdgeType_Right);
 									pEmp->setPosition(pTileSprite->getPosition());
+									pEmp->InitRot(180.0f);
 
 									BattleMapManager::getInstance()->SetEmplacement(BornEdgeType::BornEdgeType_Right, pEmp);
 								}
@@ -270,7 +271,16 @@ bool BattleMap::InitBattleMap(std::string tmxFile)
 		this->addChild(pRenderEffectLayer, curZOrder + 4, EffectLayerTag);
 
 
-
+		Emplacement* pEmpLeft = BattleMapManager::getInstance()->GetEmplacement(BornEdgeType::BornEdgeType_Left);
+		if (pEmpLeft != nullptr)
+		{
+			this->GetShipLayer()->addChild(pEmpLeft, 10.0f);
+		}
+		Emplacement* pEmpRight = BattleMapManager::getInstance()->GetEmplacement(BornEdgeType::BornEdgeType_Right);
+		if (pEmpRight != nullptr)
+		{
+			this->GetShipLayer()->addChild(pEmpRight, 10.0f);
+		}
 		//auto sLayerSize = pShipLayer->getLayerSize();
 		//auto sTileSize = pShipLayer->getMapTileSize();
 		

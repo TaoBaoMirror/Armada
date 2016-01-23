@@ -12,6 +12,8 @@ public:
 	Emplacement(BornEdgeType edgetype);
 	~Emplacement();
 
+	void InitRot(float rot);
+
 	virtual void update(float dt) override;
 
 protected:

@@ -12,6 +12,8 @@ m_LockTarget(nullptr)
 {
 	mGunEmitter = new BulletEmitter(nullptr);
 
+	mGunEmitter->SetMaxColdDown(3.0f);
+
 	AddAnim("Ship_Carrack_Move", 1, 0, nullptr, nullptr);
 
 	InitSprite("Ship_Carrack_Move");
@@ -21,6 +23,13 @@ m_LockTarget(nullptr)
 Emplacement::~Emplacement()
 {
 	if (mGunEmitter) delete mGunEmitter;
+}
+
+void Emplacement::InitRot(float rot)
+{
+	m_CurDegree = rot;
+
+	this->setRotation(-m_CurDegree);
 }
 
 void Emplacement::update(float dt)
@@ -73,7 +82,8 @@ void Emplacement::AttackTargetShip()
 	mGunEmitter->SetEmitterPos(this->getPosition());
 	cocos2d::Vec2 ori = cocos2d::Vec2(1.0f, 0.0f);
 	cocos2d::Vec2 pilot = cocos2d::Vec2(0.0f,0.0f);
-	cocos2d::Vec2 shootdir = ori.rotateByAngle(pilot, m_CurDegree);
+	float angle = CC_DEGREES_TO_RADIANS(m_CurDegree);
+	cocos2d::Vec2 shootdir = ori.rotateByAngle(pilot, angle);
 	mGunEmitter->SetShootDir(shootdir);
 	mGunEmitter->Shot(BulletEmitter::custom_dir);
 }
@@ -87,18 +97,44 @@ void Emplacement::RotToTargetShip(float dt)
 	cocos2d::Vec2 curDir = targetPos - selfPos;
 	curDir.normalize();
 
-	float degree = curDir.getAngle();
+	float angle = curDir.getAngle();
+	float degree = CC_RADIANS_TO_DEGREES(angle);
 
-	if (degree > m_CurDegree)
+	if (m_CurDegree > degree)
 	{
-		m_CurDegree += m_DegreeSpeed * dt;
+		if ((m_CurDegree - 180.0f) > degree)
+		{
+			m_CurDegree += m_DegreeSpeed * dt;
+		}
+		else
+		{
+			m_CurDegree -= m_DegreeSpeed * dt;
+		}
+		
 	}
 	else
 	{
-		m_CurDegree -= m_DegreeSpeed * dt;
+		if ((m_CurDegree + 180.0f) < degree)
+		{
+			m_CurDegree -= m_DegreeSpeed * dt;
+		}
+		else
+		{
+			m_CurDegree += m_DegreeSpeed * dt;
+		}
 	}
 
-	this->setRotation(m_CurDegree);
+	if (m_CurDegree > 180.0f)
+	{
+		m_CurDegree -= 360.0f;
+	}
+
+	if (m_CurDegree < -180.0f)
+	{
+		m_CurDegree += 360.0f;
+	}
+
+	this->setRotation(-m_CurDegree);
 }
 
 bool Emplacement::IsAttackCoolDownOver()
@@ -138,9 +174,15 @@ bool Emplacement::IsWithinDegree()
 	cocos2d::Vec2 curDir = targetPos - selfPos;
 	curDir.normalize();
 
-	float degree = curDir.getAngle();
+	float angle = curDir.getAngle();
+	float degree = CC_RADIANS_TO_DEGREES(angle);
 
 	float diffDegree = abs(degree - m_CurDegree);
+
+	if (diffDegree > 180.0f)
+	{
+		diffDegree = 360.0f - diffDegree;
+	}
 
 	if (diffDegree < m_DegreeThreshold)
 	{
