@@ -56,3 +56,13 @@ int Drive::Sign(const cocos2d::Vec2& v1, const cocos2d::Vec2& v2)
 		return 1;
 	}
 }
+
+bool Drive::CollideCircle(float r, const cocos2d::Vec2& pos)
+{
+	float r1 = this->Radius();
+	const cocos2d::Vec2& pos1 = this->Pos();
+	float r2 = r;
+	const cocos2d::Vec2& pos2 = pos;
+	//
+	return pos1.distanceSquared(pos2) < r1 * r2;
+}
