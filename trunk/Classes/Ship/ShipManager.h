@@ -58,6 +58,14 @@ public:
 
 	ShipBase* GetSelfShip();
 	//-------------------------------------
+	std::map<TeamShipSeat, ShipBase*>& GetTeamLeftShips()
+	{
+		return m_Team_Left_Ships;
+	}
+	std::map<TeamShipSeat, ShipBase*>& GetTeamRightShips()
+	{
+		return m_Team_Right_Ships;
+	}
 
 protected:
 	ShipManager();

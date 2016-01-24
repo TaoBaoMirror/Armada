@@ -33,6 +33,8 @@ public:
 	void onHoldPress_Right();
 	//
 	void AddBullet(BulletBase* bullet);
+	//
+	void RandomCreateItemInScene();
 	
 protected:
 	BattleStatue m_BTS;

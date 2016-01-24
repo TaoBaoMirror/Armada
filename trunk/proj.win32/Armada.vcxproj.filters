@@ -43,6 +43,9 @@
     <Filter Include="src\Bullet">
       <UniqueIdentifier>{c5d09480-5d27-4652-a16b-8550a5512b30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Item">
+      <UniqueIdentifier>{6ddb261f-2c71-47f7-a4af-4ca62840c513}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,6 +140,24 @@
     </ClCompile>
     <ClCompile Include="..\Classes\BattleMap\Emplacement.cpp">
       <Filter>src\BattleMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\Buff.cpp">
+      <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\BuffCreater.cpp">
+      <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\Item.cpp">
+      <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\ItemQuicken.cpp">
+      <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\QuickenBuff.cpp">
+      <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\ItemManager.cpp">
+      <Filter>src\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +256,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BattleMap\Emplacement.h">
       <Filter>src\BattleMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\Buff.h">
+      <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\BuffCreater.h">
+      <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\Item.h">
+      <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\ItemQuicken.h">
+      <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\QuickenBuff.h">
+      <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\ItemManager.h">
+      <Filter>src\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

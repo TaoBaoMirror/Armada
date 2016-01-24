@@ -13,7 +13,7 @@ const float DefaultMaxSpeed = 100;
 const float DefaultTurnRate = 30;
 const float DefaultForce = 100;
 const cocos2d::Vec2 DefaultShipPos = cocos2d::Vec2::ZERO;
-const float DefaultRadius = 6;
+const float DefaultRadius = 8;
 //
 const float DefaultAngularVelocity = 0;
 const float DefaultmMaxAngularSpeed = 3.14f * 3;

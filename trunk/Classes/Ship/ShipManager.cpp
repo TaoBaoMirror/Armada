@@ -302,4 +302,6 @@ ShipBase* ShipManager::FindShipByDistance(BornEdgeType borntype, cocos2d::Vec2 o
 	default:
 		break;
 	}
+	//
+	return nullptr;
 }

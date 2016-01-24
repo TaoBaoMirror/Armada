@@ -169,6 +169,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GameScene\BattleScene.cpp" />
     <ClCompile Include="..\Classes\GameScene\TitleScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Item\Buff.cpp" />
+    <ClCompile Include="..\Classes\Item\BuffCreater.cpp" />
+    <ClCompile Include="..\Classes\Item\Item.cpp" />
+    <ClCompile Include="..\Classes\Item\ItemManager.cpp" />
+    <ClCompile Include="..\Classes\Item\ItemQuicken.cpp" />
+    <ClCompile Include="..\Classes\Item\QuickenBuff.cpp" />
     <ClCompile Include="..\Classes\ResDef.cpp" />
     <ClCompile Include="..\Classes\Ship\ShipBase.cpp" />
     <ClCompile Include="..\Classes\Ship\ShipManager.cpp" />
@@ -203,6 +209,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GameScene\BattleSceneCommon.h" />
     <ClInclude Include="..\Classes\GameScene\TitleScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Item\Buff.h" />
+    <ClInclude Include="..\Classes\Item\BuffCreater.h" />
+    <ClInclude Include="..\Classes\Item\Item.h" />
+    <ClInclude Include="..\Classes\Item\ItemManager.h" />
+    <ClInclude Include="..\Classes\Item\ItemQuicken.h" />
+    <ClInclude Include="..\Classes\Item\QuickenBuff.h" />
     <ClInclude Include="..\Classes\ResDef.h" />
     <ClInclude Include="..\Classes\Ship\ShipBase.h" />
     <ClInclude Include="..\Classes\Ship\ShipManager.h" />

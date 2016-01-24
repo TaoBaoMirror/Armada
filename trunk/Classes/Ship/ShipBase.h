@@ -7,6 +7,7 @@
 #include "Common/GameAnimation.h"
 
 
+
 enum ShipCtrlType
 {
 	ShipCtrlType_Move = 0,
@@ -24,6 +25,8 @@ enum ShipCtrlEvent
 	KeyDown,
 	KeyReleased
 };
+
+class Buff;
 
 class ShipBase : public GameAnimation , public Vehicle
 {
@@ -92,7 +95,10 @@ public:
 
 	void SetBelongType(BornEdgeType type);
 	BornEdgeType GetBelongType();
-
+	//add by wwh
+	void AddBuff(Buff* buff);
+	void RemoveBuff(Buff* buff,bool clearup = true);/* not erase the buff*/
+	void UpdateBuffList(float dt);
 public:
 	//ShipFSM* m_pFSM;
 
@@ -112,6 +118,8 @@ protected:
 	cocos2d::Size m_SelfBoundBoxSize;
 
 	BornEdgeType m_bBelongType;
+	//
+	std::list<Buff*>	mBuffList;
 };
 
 #endif //__SHIP_BASE_H__

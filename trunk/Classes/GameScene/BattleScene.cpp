@@ -4,6 +4,8 @@
 #include "Ship\ShipManager.h"
 #include "Bullet\BulletBase.h"
 #include "Drive\World.h"
+#include "Item\ItemManager.h"
+#include "Item\Item.h"
 
 USING_NS_CC;
 
@@ -100,6 +102,8 @@ void BattleScene::update(float delta)
 		ShipManager::getInstance()->Update(delta);
 		//
 		World::GetInstance()->Tick(delta);
+		//
+		ItemManager::GetInstance()->UpdateItems(delta);
 	}
 		break;
 	case BattleStatue::BattleStatue_Settlement:
@@ -218,8 +222,15 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_FireRight, ShipCtrlEvent::KeyPressed);
 		}
 
-
+		///
+		// TEST
+		///
+		if (keyCode == EventKeyboard::KeyCode::KEY_P)
+		{
+			RandomCreateItemInScene();
+		}
 	}
+
 	else if (m_BTS == BattleStatue::BattleStatue_Settlement)
 	{
 	}
@@ -293,6 +304,26 @@ void BattleScene::AddBullet(BulletBase* bullet)
 		bulletLayer->addChild(bullet);
 	}
 
+
+}
+
+void BattleScene::RandomCreateItemInScene()
+{
+	int  itemType = 1;
+
+	Item* item = ItemManager::GetInstance()->CreateItem(itemType);
+
+	cocos2d::Layer* itemLayer = BattleMapManager::getInstance()->GetBattleMap()->GetItemLayer();
+
+	if (itemLayer)
+	{
+		itemLayer->addChild(item);
+	}
+
+	ItemManager::GetInstance()->AddItem(item);
+	Size s_size = itemLayer->getBoundingBox().size;
+	item->setPosition(RandomHelper::random_int(0, (int)s_size.width), RandomHelper::random_int(0, (int)s_size.height));
+	item->setPosition(400, 200);
 
 }
 

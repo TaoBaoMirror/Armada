@@ -1,6 +1,7 @@
 #include "ShipBase.h"
 #include "Drive/Vehicle.h"
 #include "Drive/World.h"
+#include "Item/Buff.h"
 
 ShipBase::ShipBase(): 
 	Vehicle(World::GetInstance())
@@ -66,6 +67,7 @@ void ShipBase::ShipBattleCtrl(ShipCtrlType type, ShipCtrlEvent evt)
 void ShipBase::UpdateShip(float dt)
 {
 	GameAnimation::update(dt);
+	UpdateBuffList(dt);
 }
 
 void ShipBase::InitShip()
@@ -81,4 +83,46 @@ void ShipBase::SetBelongType(BornEdgeType type)
 BornEdgeType ShipBase::GetBelongType()
 {
 	return m_bBelongType;
+}
+
+void ShipBase::AddBuff(Buff* buff)
+{
+	mBuffList.push_back(buff);
+	//
+	buff->SetBearer(this);
+	buff->BuffOn();
+	buff->OnAttachShip();
+}
+
+void ShipBase::RemoveBuff(Buff* buff, bool clearup)
+{
+	buff->OnDetachShip();
+	//
+	if (clearup)
+	{
+		mBuffList.remove(buff);
+	}
+	//
+	delete buff;
+}
+
+void ShipBase::UpdateBuffList(float dt)
+{
+	std::list<Buff*>::iterator it = mBuffList.begin();
+	while (it != mBuffList.end())
+	{
+		Buff* buff = *it;
+		buff->UpdateBuff(dt);
+		//
+		if (buff->IsEnable() == false)
+		{
+			it = mBuffList.erase(it);
+			//
+			RemoveBuff(buff, false);
+		}
+		else
+		{
+			it++;
+		}
+	}
 }

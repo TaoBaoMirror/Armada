@@ -49,6 +49,7 @@ public:
 
 	float	Radius()const { return mRadius; }
 	void	SetRadius(float r){ mRadius = r; }
+	bool	CollideCircle(float r, const cocos2d::Vec2& pos);
 	//////////////////////////////////////////////////////////////////////////
 	float   MaxAngularSpeed()const{ return mMaxAngularSpeed; }
 	void	SetMaxAngularSpeed(double new_speed){ mMaxAngularSpeed = new_speed; }
