@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(SolutionDir)..\..\dependencies\include\MatchVS_include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -84,7 +84,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);MatchSDK.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -108,6 +108,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy /Y $(SolutionDir)..\..\dependencies\libs_winx86\*.dll $(SolutionDir)Release.win32</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -175,6 +178,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Item\ItemManager.cpp" />
     <ClCompile Include="..\Classes\Item\ItemQuicken.cpp" />
     <ClCompile Include="..\Classes\Item\QuickenBuff.cpp" />
+    <ClCompile Include="..\Classes\Network\ImageDownloader.cpp" />
+    <ClCompile Include="..\Classes\Network\ImageNotifyCenter.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoBattleScene.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoCommon.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoLobbyPay.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoLobbyScene.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoPayScene.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoScence.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoUserBattle.cpp" />
+    <ClCompile Include="..\Classes\Network\MatchVSDemoUserScene.cpp" />
     <ClCompile Include="..\Classes\ResDef.cpp" />
     <ClCompile Include="..\Classes\Ship\ShipBase.cpp" />
     <ClCompile Include="..\Classes\Ship\ShipManager.cpp" />
@@ -215,6 +228,17 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Item\ItemManager.h" />
     <ClInclude Include="..\Classes\Item\ItemQuicken.h" />
     <ClInclude Include="..\Classes\Item\QuickenBuff.h" />
+    <ClInclude Include="..\Classes\Network\CommonMutex.h" />
+    <ClInclude Include="..\Classes\Network\ImageDownloader.h" />
+    <ClInclude Include="..\Classes\Network\ImageNotifyCenter.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoBattleScene.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoCommon.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoLobbyPay.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoLobbyScene.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoPayScene.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoScence.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoUserBattle.h" />
+    <ClInclude Include="..\Classes\Network\MatchVSDemoUserScene.h" />
     <ClInclude Include="..\Classes\ResDef.h" />
     <ClInclude Include="..\Classes\Ship\ShipBase.h" />
     <ClInclude Include="..\Classes\Ship\ShipManager.h" />

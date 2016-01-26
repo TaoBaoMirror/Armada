@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Ship\ShipManager.h"
+#include "Network\MatchVSDemoLobbyPay.h"
 
 enum BattleStatue
 {
@@ -48,6 +49,9 @@ protected:
 	bool m_bHoldPress_Forward;
 	bool m_bHoldPress_Left;
 	bool m_bHoldPress_Right;
+
+	std::string lobby_str;
+	MatchVSDemoLobbyPayBundle* m_fomain;
 };
 
 #endif
