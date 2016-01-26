@@ -3,6 +3,7 @@
 #include "ResDef.h"
 #include "BattleMap\BattleMapManager.h"
 #include "BattleSceneCommon.h"
+#include "Network\MatchVSDemoScence.h"
 
 USING_NS_CC;
 
@@ -50,10 +51,14 @@ void TitleScene::onEnter()
 		loadRes();
 		//m_loadThread->join();
 	}
+
+	//Test
+	CCDirector::sharedDirector()->replaceScene(MatchVSDemoScence::createScene());
+	//end
 	//
 	//Test
-	BattleMapManager::getInstance()->SetTeamBornEdge(BornEdgeType::BornEdgeType_Left);
-	GameManager::getInstance()->EnterBattleMap(0);
+	//BattleMapManager::getInstance()->SetTeamBornEdge(BornEdgeType::BornEdgeType_Left);
+	//GameManager::getInstance()->EnterBattleMap(0);
 	//end
 }
 

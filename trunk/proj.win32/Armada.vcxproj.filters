@@ -46,6 +46,9 @@
     <Filter Include="src\Item">
       <UniqueIdentifier>{6ddb261f-2c71-47f7-a4af-4ca62840c513}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Network">
+      <UniqueIdentifier>{1680232d-c57a-4b72-a775-1767258e361b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -158,6 +161,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Item\ItemManager.cpp">
       <Filter>src\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\ImageDownloader.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\ImageNotifyCenter.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoBattleScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoCommon.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoLobbyPay.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoLobbyScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoPayScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoScence.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoUserBattle.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\MatchVSDemoUserScene.cpp">
+      <Filter>src\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +307,39 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Item\ItemManager.h">
       <Filter>src\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\CommonMutex.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\ImageDownloader.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\ImageNotifyCenter.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoBattleScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoCommon.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoLobbyPay.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoLobbyScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoPayScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoScence.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoUserBattle.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\MatchVSDemoUserScene.h">
+      <Filter>src\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

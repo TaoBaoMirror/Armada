@@ -42,6 +42,8 @@ bool BattleScene::init()
 		return false;
 	}
 
+	m_fomain = MatchVSDemoLobbyPayBundle::getInstance();
+
 	m_BTS = BattleStatue::BattleStatue_Ready;	
 
 	//test init ships	
@@ -57,6 +59,9 @@ bool BattleScene::init()
 	//end
 
 	setKeyboardEnabled(true);
+
+	//lobby_str = "...";
+	//m_fomain->set_str(&lobby_str);
 
 	scheduleUpdate();
 
@@ -193,10 +198,14 @@ void BattleScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			m_bHoldPress_Forward = true;
 
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Move, ShipCtrlEvent::KeyPressed);
+
+			const char * i = m_fomain->Handle("send_rand");
 		}
 		else if (keyCode == EventKeyboard::KeyCode::KEY_S)
 		{
 			pShip->ShipBattleCtrl(ShipCtrlType::ShipCtrlType_Break, ShipCtrlEvent::KeyPressed);
+
+			const char * i = m_fomain->Handle("send_rand");
 		}
 		//Turn
 		if (keyCode == EventKeyboard::KeyCode::KEY_A)
